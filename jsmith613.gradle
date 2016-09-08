@@ -9,8 +9,8 @@ repositories {
 }
 
 jar {
-    mainfest {
-        attributes 'Implementation-Title': 'M2 CS2340', 'Impementation-Version': version, 'Class-Path': '../../lib/resources.jar', 'Main-Class': ''
+    manifest {
+        attributes 'Implementation-Title': 'M2 CS2340', 'Impementation-Version': version, 'Class-Path': '../../lib/resources.jar', 'Main-Class': 'edu/gatech/oad/antlab/pkg1/AntLabMain.java'
     }
 }
 
