@@ -1,4 +1,4 @@
 Josiah Smith
-jsmith613
+jsmith613@gatech.edu
 
 AYYYYE
