@@ -1,13 +1,19 @@
-defaultTasks '<task>'
-
-apply plugin: '<plugin>'
+defaultTasks 'jar'
+version = '1.0'
+apply plugin: 'java'
 
 dependencies {
-	_____________
+	compile name: 'resources'
+}
+
+repositories {
+	flatDir {
+		dirs 'lib'
+	}
 }
 
 jar {
 	manifest {
-		attributes '<attribute>' : '______', <attribute>: '_______'
+		attributes 'Implementation-Title': 'CS2340 M2', 'Impementation-Version': version, 'Class-Path': '../../lib/resources.jar', 'Main-Class': ''
 	}
 }

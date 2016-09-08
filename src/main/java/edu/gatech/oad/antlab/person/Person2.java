@@ -37,10 +37,10 @@ public class Person2 {
         Random rand = new Random();
 
         for (int i = 0; i < input.length(); i++) {
-            int swap = rand.nextInt(input.length());
+            int sw
+            arr[swap] = temp;ap = rand.nextInt(input.length());
             char temp = arr[i];
             arr[i] = arr[swap];
-            arr[swap] = temp;
         }
         StringBuilder build = new StringBuilder();
         for (int j = 0; j < input.length(); j++) {
