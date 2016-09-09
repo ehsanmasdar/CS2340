@@ -15,7 +15,7 @@ public class Person2 {
 
     /**
      * The constructor, takes in the persons name
-     * 
+     *
      * @param pname
      *            the person's real name
      */
@@ -39,8 +39,8 @@ public class Person2 {
         for (int i = 0; i < input.length(); i++) {
             int swap = rand.nextInt(input.length());
             char temp = arr[i];
-            arr[swap] = temp;
             arr[i] = arr[swap];
+            arr[swap] = temp;
         }
         StringBuilder build = new StringBuilder();
         for (int j = 0; j < input.length(); j++) {
