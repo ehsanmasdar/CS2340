@@ -43,7 +43,6 @@ public class Person3 {
 	 */
 	private String calc(String input) {
 	  //Person 3 put your implementation here
-        String input = args[0];
         String reversedString = "";
         for (int i = input.length() - 1; i >= 0; i--) {
             reversedString = reversedString.concat(Character.toString(input.charAt(i)));
