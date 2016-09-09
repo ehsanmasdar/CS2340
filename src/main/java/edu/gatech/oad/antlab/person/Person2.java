@@ -37,9 +37,9 @@ public class Person2 {
         Random rand = new Random();
 
         for (int i = 0; i < input.length(); i++) {
-            int sw
-            arr[swap] = temp;ap = rand.nextInt(input.length());
+            int swap = rand.nextInt(input.length());
             char temp = arr[i];
+            arr[swap] = temp;
             arr[i] = arr[swap];
         }
         StringBuilder build = new StringBuilder();
