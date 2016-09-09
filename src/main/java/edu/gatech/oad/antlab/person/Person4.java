@@ -33,7 +33,7 @@ public class Person4 {
       //Person 4 put your implementation here
       String newString = "";
       for (int i = 0; i < input.length(); i++) {
-        newString = newString + String.valueOf(input.charAt(i) + 1);
+        newString = newString + (char) ((int)input.charAt(i) + 1);
       }
       return newString;
     }
@@ -51,4 +51,3 @@ public class Person4 {
     }
 
 }
-

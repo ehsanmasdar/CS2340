@@ -52,35 +52,32 @@ import edu.gatech.oad.antlab.pkg2.*;
      */
     public void printOutMessage() {
 
-        String toPrint =
-            ant11.getMessage() + ant12.getMessage() + ant21.getMessage()
-          + ant22.getMessage() + ant31.getMessage();
-		  //Person1 replace P1 with your name
-		  //and gburdell1 with your gt id
-		  Person1 p1 = new Person1("Ehsan Asdar");
-		  toPrint += p1.toString("easdar3");
-		  //Person2 replace P2 with your name
-		  //and gburdell with your gt id
-		  Person2 p2 = new Person2("P2");
-		  toPrint += p2.toString("gburdell2");
-		  //Person3 replace P3 with your name
-		  //and gburdell3 with your gt id
-		  Person3 p3 = new Person3("Josiah Smith");
-		  toPrint += p3.toString("jsmith613");
-          //Person4 replace P4 with your name
-          //and gburdell4 with your gt id
-          Person4 p4 = new Person4("Jacob Wartofsky");
-          toPrint += p4.toString("jwartofsky3");
-          //Person5 replace P4 with your name
-          //and gburdell5 with your gt id
-          Person5 p5 = new Person5("Justin Duan");
-          toPrint += p5.toString("jduan39");
+      String toPrint =
+          ant11.getMessage() + ant12.getMessage() + ant21.getMessage()
+        + ant22.getMessage() + ant31.getMessage();
+  		  //Person1 replace P1 with your name
+  		  //and gburdell1 with your gt id
+  		  Person1 p1 = new Person1("Ehsan Asdar");
+  		  toPrint += p1.toString("easdar3");
+  		  //Person2 replace P2 with your name
+  		  //and gburdell with your gt id
+  		  Person2 p2 = new Person2("William Hornsby");
+  		  toPrint += p2.toString("whornsby3");
+  		  //Person3 replace P3 with your name
+  		  //and gburdell3 with your gt id
+  		  Person3 p3 = new Person3("Josiah Smith");
+  		  toPrint += p3.toString("jsmith613");
+        //Person4 replace P4 with your name
+        //and gburdell4 with your gt id
+        Person4 p4 = new Person4("Jacob Wartofsky");
+        toPrint += p4.toString("jwartofsky3");
+        //Person5 replace P4 with your name
+        //and gburdell5 with your gt id
+        Person5 p5 = new Person5("Justin Duan");
+        toPrint += p5.toString("jduan39");
 
         System.out.println(toPrint);
-
-
     }
-
 
     /**
      * entry point for the program
