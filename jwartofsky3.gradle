@@ -1,14 +1,10 @@
 apply plugin: 'java'
 version = '1.0'
-sourceCompatability = 1.8
+
 defaultTasks 'jar'
 
 dependencies {
     compile files('lib/resources.jar')
-}
-
-task myJavadocs(type: javadoc) {
-    source = sourceSets.main.allJava
 }
 
 jar {
