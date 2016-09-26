@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:controller="com.cs2340.controller.MainController" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -53,12 +53,12 @@
     </MenuBar>
       <BorderPane prefHeight="393.0" prefWidth="640.0">
          <center>
-            <Label alignment="TOP_CENTER" prefHeight="115.0" prefWidth="122.0" text="Welcome!&#10;This is the Main Screen" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+            <Label alignment="TOP_CENTER" prefHeight="115.0" prefWidth="122.0" text="Welcome!&#10;This is the com.cs2340.controller.LoginController Screen" textAlignment="CENTER" BorderPane.alignment="CENTER" />
          </center>
          <top>
             <HBox prefHeight="19.0" prefWidth="640.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button id="mainViewLogoutButton" mnemonicParsing="false" text="Logout" />
+                  <Button id="mainViewLogoutButton" mnemonicParsing="false" text="Logout" onAction="#handleLogout" />
                </children>
             </HBox>
          </top>
