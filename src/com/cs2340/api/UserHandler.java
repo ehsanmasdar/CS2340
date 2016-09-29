@@ -13,7 +13,12 @@ public class UserHandler {
                     .field("username", user.username)
                     .field("password", user.password)
                     .field("level", user.level).asJson().getBody().getObject();
-            return new Response(jsonResponse.getInt("success"), "", null);
+            if (jsonResponse.has("message")){
+                return new Response(jsonResponse.getInt("success"), jsonResponse.getString("message"), null);
+            }
+            else{
+                return new Response(jsonResponse.getInt("success"), "", null);
+            }
         } catch (UnirestException e) {
             e.printStackTrace();
             return new Response(0,"",null);
@@ -24,7 +29,12 @@ public class UserHandler {
             JSONObject jsonResponse = Unirest.post(Constants.URL_BASE + "/api/user/login")
                     .field("username", user.username)
                     .field("password", user.password).asJson().getBody().getObject();
-            return new Response(jsonResponse.getInt("success"),jsonResponse.getString("message"), null);
+            if (jsonResponse.has("message")){
+                return new Response(jsonResponse.getInt("success"), jsonResponse.getString("message"), null);
+            }
+            else{
+                return new Response(jsonResponse.getInt("success"), "", null);
+            }
         } catch (UnirestException e) {
             e.printStackTrace();
             return new Response(0,"",null);
