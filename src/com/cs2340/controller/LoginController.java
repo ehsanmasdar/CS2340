@@ -32,6 +32,7 @@ public class LoginController {
     public void handleSubmitPressed(ActionEvent actionEvent) {
         Response r = UserHandler.postLogin(new User(username.getText(),password.getText()));
         if (r.sucess == 1){
+            mainApplication.setCookie((String) r.data);
             mainApplication.showMainScreen();
         }
         else {

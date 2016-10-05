@@ -1,7 +1,7 @@
 package com.cs2340.model;
 
 
-public enum  AccessLevel {
+public enum AccessLevel {
     ADMIN("admin"),
     MANAGER("manager"),
     WORKER("worker"),

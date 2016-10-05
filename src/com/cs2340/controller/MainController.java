@@ -11,6 +11,10 @@ public class MainController {
     }
 
     public void handleLogout(ActionEvent actionEvent) {
+        mainApplication.setCookie("");
         mainApplication.showLoginScreen();
+    }
+    public void handleProfile(ActionEvent actionEvent) {
+        mainApplication.showProfileScreen();
     }
 }

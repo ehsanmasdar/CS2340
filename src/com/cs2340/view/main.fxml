@@ -17,7 +17,7 @@
          <top>
             <HBox prefHeight="19.0" prefWidth="640.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button id="mainViewProfileButton" mnemonicParsing="false" text="Profile">
+                  <Button onAction="#handleProfile" id="mainViewProfileButton" mnemonicParsing="false" text="Profile">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>

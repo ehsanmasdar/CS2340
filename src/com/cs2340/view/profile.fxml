@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="212.0" prefWidth="199.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:controller="com.cs2340.controller.ProfileController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="212.0" prefWidth="199.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label alignment="TOP_LEFT" prefHeight="24.0" prefWidth="85.0" text="Profile">
          <padding>
@@ -22,17 +21,15 @@
                   <Insets left="3.0" />
                </padding>
             </Label>
-            <Label id="profileTitleLabel" text="Not specified yet!" />
          </children>
       </HBox>
       <HBox prefHeight="33.0" prefWidth="598.0">
          <children>
-            <TextField id="profileTitleText">
+            <TextField fx:id="profileTitleText">
                <padding>
                   <Insets left="3.0" />
                </padding>
             </TextField>
-            <Button id="profileTitleButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="Submit" />
          </children>
       </HBox>
       <HBox prefHeight="4.0" prefWidth="600.0">
@@ -42,17 +39,15 @@
                   <Insets left="3.0" />
                </padding>
             </Label>
-            <Label id="profileEmailLabel" text="Not specified yet!" />
          </children>
       </HBox>
       <HBox prefHeight="39.0" prefWidth="598.0">
          <children>
-            <TextField id="profileEmailText">
+            <TextField fx:id="profileEmailText">
                <padding>
                   <Insets left="3.0" />
                </padding>
             </TextField>
-            <Button id="profileEmailButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="Submit" />
          </children>
       </HBox>
       <HBox prefHeight="4.0" prefWidth="600.0">
@@ -62,18 +57,17 @@
                   <Insets left="3.0" />
                </padding>
             </Label>
-            <Label id="profileAddressLabel" text="Not specified yet!" />
          </children>
       </HBox>
       <HBox prefHeight="4.0" prefWidth="600.0">
          <children>
-            <TextField id="profileAddressText">
+            <TextField fx:id="profileAddressText">
                <padding>
                   <Insets left="3.0" />
                </padding>
             </TextField>
-            <Button id="profileAddressButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="Submit" />
          </children>
       </HBox>
+      <Button id="profileAddressButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="73.0" text="Submit" onAction="#handleProfileSubmit"/>
    </children>
 </VBox>
