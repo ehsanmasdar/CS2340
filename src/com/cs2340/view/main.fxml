@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs2340.controller.MainController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs2340.controller.MainController">
   <children>
       <BorderPane prefHeight="393.0" prefWidth="640.0">
          <center>
@@ -17,13 +17,13 @@
          <top>
             <HBox prefHeight="19.0" prefWidth="640.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button onAction="#handleProfile" id="mainViewProfileButton" mnemonicParsing="false" text="Profile">
+                  <Button id="mainViewProfileButton" mnemonicParsing="false" onAction="#handleProfile" prefHeight="27.0" prefWidth="110.0" text="Profile">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Button>
                   <Region prefHeight="25.0" prefWidth="534.0" />
-                  <Button id="mainViewLogoutButton" mnemonicParsing="false" onAction="#handleLogout" text="Logout" />
+                  <Button id="mainViewLogoutButton" mnemonicParsing="false" onAction="#handleLogout" prefHeight="27.0" prefWidth="126.0" text="Logout" />
                </children>
             </HBox>
          </top>
