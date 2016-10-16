@@ -33,6 +33,7 @@ public class LoginController {
         Response r = UserHandler.postLogin(new User(username.getText(),password.getText()));
         if (r.sucess == 1){
             mainApplication.setCookie((String) r.data);
+            mainApplication.setUsername(username.getText());
             mainApplication.showMainScreen();
         }
         else {

@@ -1,19 +1,15 @@
 package com.cs2340.app;
 
-import com.cs2340.controller.MainController;
-import com.cs2340.controller.ProfileController;
-import com.cs2340.controller.RegisterController;
+import com.cs2340.controller.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.logging.Level;
-import com.cs2340.controller.LoginController;
 
 import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 
@@ -25,6 +21,16 @@ public class MainApp extends Application {
     }
 
     private String cookie;
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         mainScreen = primaryStage;
@@ -126,6 +132,59 @@ public class MainApp extends Application {
 
             // Set the com.cs2340.controller.app.MainApp App title
             mainScreen.setTitle("Main");
+
+            // Show the scene containing the root layout.
+            Scene scene = new Scene(a);
+            mainScreen.setScene(scene);
+            mainScreen.show();
+
+
+        } catch (IOException e) {
+            //error on load, so log it
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for MainScreen!!");
+            e.printStackTrace();
+        }
+    }
+
+    public void showSourceReportScreen() {
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("../view/sourceReport.fxml"));
+            VBox a = loader.load();
+
+            // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
+            SourceReportController controller = loader.getController();
+            controller.setMainApplication(this);
+
+            // Set the com.cs2340.controller.app.MainApp App title
+            mainScreen.setTitle("Enter a new Source Report");
+
+            // Show the scene containing the root layout.
+            Scene scene = new Scene(a);
+            mainScreen.setScene(scene);
+            mainScreen.show();
+
+
+        } catch (IOException e) {
+            //error on load, so log it
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for MainScreen!!");
+            e.printStackTrace();
+        }
+    }
+    public void showSourceReportViewScreen() {
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("../view/sourceReportView.fxml"));
+            VBox a = loader.load();
+
+            // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
+            SourceReportViewController controller = loader.getController();
+            controller.setMainApplication(this);
+
+            // Set the com.cs2340.controller.app.MainApp App title
+            mainScreen.setTitle("Enter a new Source Report");
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(a);

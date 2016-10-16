@@ -11,10 +11,17 @@ public class MainController {
     }
 
     public void handleLogout(ActionEvent actionEvent) {
-        mainApplication.setCookie("");
+        mainApplication.setCookie(null);
+        mainApplication.setUsername(null);
         mainApplication.showLoginScreen();
     }
     public void handleProfile(ActionEvent actionEvent) {
         mainApplication.showProfileScreen();
+    }
+    public void handleSourceReportSubmit(ActionEvent actionEvent){
+        mainApplication.showSourceReportScreen();
+    }
+    public void handleSourceReportView (ActionEvent actionEvent){
+        mainApplication.showSourceReportViewScreen();
     }
 }

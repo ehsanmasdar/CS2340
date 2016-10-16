@@ -2,12 +2,9 @@ package com.cs2340.controller;
 
 import com.cs2340.api.UserHandler;
 import com.cs2340.app.MainApp;
-import com.cs2340.model.AccessLevel;
 import com.cs2340.model.Profile;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 
 
