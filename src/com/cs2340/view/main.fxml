@@ -4,11 +4,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs2340.controller.MainController">
@@ -31,10 +28,10 @@
             </HBox>
          </top>
          <left>
-            <Button id="mainViewSubmitButton" onAction="#handleSourceReportSubmit" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Submit report" BorderPane.alignment="CENTER" />
+            <Button id="mainViewSubmitButton" mnemonicParsing="false" onAction="#handleSourceReportSubmit" text="Submit report" BorderPane.alignment="CENTER" />
          </left>
          <right>
-            <Button id="mainViewReportButton" onAction="#handleSourceReportView" mnemonicParsing="false" prefHeight="27.0" prefWidth="102.0" text="View Report" BorderPane.alignment="CENTER" />
+            <Button id="mainViewReportButton" mnemonicParsing="false" onAction="#handleSourceReportView" text="View Report" BorderPane.alignment="CENTER" />
          </right>
       </BorderPane>
 

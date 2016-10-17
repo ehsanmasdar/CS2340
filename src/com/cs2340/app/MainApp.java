@@ -1,9 +1,11 @@
 package com.cs2340.app;
 
 import com.cs2340.controller.*;
+import com.cs2340.model.SourceReport;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -108,9 +110,11 @@ public class MainApp extends Application {
             mainScreen.setTitle("Profile");
 
             // Show the scene containing the root layout.
+            Stage altStage = new Stage();
             Scene scene = new Scene(a);
-            mainScreen.setScene(scene);
-            mainScreen.show();
+            //opens in new window
+            altStage.setScene(scene);
+            altStage.show();
 
 
         } catch (IOException e) {
@@ -161,9 +165,11 @@ public class MainApp extends Application {
             mainScreen.setTitle("Enter a new Source Report");
 
             // Show the scene containing the root layout.
+            Stage altStage = new Stage();
             Scene scene = new Scene(a);
-            mainScreen.setScene(scene);
-            mainScreen.show();
+            //opens in new window
+            altStage.setScene(scene);
+            altStage.show();
 
 
         } catch (IOException e) {
@@ -184,12 +190,14 @@ public class MainApp extends Application {
             controller.setMainApplication(this);
 
             // Set the com.cs2340.controller.app.MainApp App title
-            mainScreen.setTitle("Enter a new Source Report");
+            mainScreen.setTitle("Source Reports");
 
             // Show the scene containing the root layout.
+            Stage altStage = new Stage();
             Scene scene = new Scene(a);
-            mainScreen.setScene(scene);
-            mainScreen.show();
+            //opens in new window
+            altStage.setScene(scene);
+            altStage.show();
 
 
         } catch (IOException e) {

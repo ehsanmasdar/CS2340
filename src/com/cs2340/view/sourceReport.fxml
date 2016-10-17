@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="249.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs2340.controller.SourceReportController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs2340.controller.SourceReportController">
    <children>
-      <Label prefHeight="25.0" prefWidth="154.0" text="Submit Water Source Report:" />
+      <Label text="Submit Water Source Report:" />
       <HBox prefHeight="31.0" prefWidth="600.0">
          <children>
             <Label text="Latitude" />

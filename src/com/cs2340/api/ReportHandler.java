@@ -30,7 +30,7 @@ public class ReportHandler {
         try {
             JSONArray jsonResponse = Unirest.get(Constants.URL_BASE + "/api/report/source").header("Cookie", cookie)
                     .asJson().getBody().getArray();
-            System.out.println(jsonResponse.toString());
+            //System.out.println(jsonResponse.toString());
             SourceReport[] sourceReports = new SourceReport[jsonResponse.length()];
             for (int i = 0; i < jsonResponse.length(); i++){
                 JSONObject obj = jsonResponse.getJSONObject(i);

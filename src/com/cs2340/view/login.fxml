@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="180.0" minWidth="300.0" prefHeight="142.0" prefWidth="235.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs2340.controller.LoginController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="180.0" minWidth="300.0" prefHeight="200.0" prefWidth="235.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs2340.controller.LoginController">
    <children>
       <HBox prefHeight="30.0" prefWidth="596.0">
          <children>
