@@ -110,11 +110,14 @@ public class MainApp extends Application {
             mainScreen.setTitle("Profile");
 
             // Show the scene containing the root layout.
-            Stage altStage = new Stage();
+            /*Stage altStage = new Stage();
             Scene scene = new Scene(a);
             //opens in new window
             altStage.setScene(scene);
-            altStage.show();
+            altStage.show();*/
+            Scene scene = new Scene(a);
+            mainScreen.setScene(scene);
+            mainScreen.show();
 
 
         } catch (IOException e) {
@@ -165,11 +168,14 @@ public class MainApp extends Application {
             mainScreen.setTitle("Enter a new Source Report");
 
             // Show the scene containing the root layout.
-            Stage altStage = new Stage();
+            /*Stage altStage = new Stage();
             Scene scene = new Scene(a);
             //opens in new window
             altStage.setScene(scene);
-            altStage.show();
+            altStage.show();*/
+            Scene scene = new Scene(a);
+            mainScreen.setScene(scene);
+            mainScreen.show();
 
 
         } catch (IOException e) {
