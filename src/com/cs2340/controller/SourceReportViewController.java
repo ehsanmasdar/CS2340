@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SourceReportViewController {
 
@@ -20,11 +20,7 @@ public class SourceReportViewController {
      */
     public void setMainApplication(MainApp m) {
         SourceReport[] sourceReports = ReportHandler.getSourceReport(m.getCookie()).data;
-        ArrayList<SourceReport> ReportList = new ArrayList<>();
-        for(SourceReport r: sourceReports) {
-            ReportList.add(r);
-        }
-        ObservableList<SourceReport> observableList = FXCollections.observableList(ReportList);
+        ObservableList<SourceReport> observableList = FXCollections.observableList(Arrays.asList(sourceReports));
         sourceReportViewListView.setItems(observableList);
         //System.out.println(sourceReports[0]);
     }
