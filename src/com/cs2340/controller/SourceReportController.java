@@ -38,17 +38,25 @@ public class SourceReportController {
         try{
             Double latd = Double.parseDouble(lat.getText());
             Double lond = Double.parseDouble(lon.getText());
-            Response r = ReportHandler.postSourceReport(new SourceReport(mainApplication.getUsername(), latd, lond,type.getSelectionModel().getSelectedItem(), condition.getSelectionModel().getSelectedItem()), mainApplication.getCookie());
-            if (r.sucess == 1){
-                mainApplication.showMainScreen();
-            }
-            else {
+            if ( latd > 90 || latd < -90 || lond > 120 || lond < -120){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Report Submit Error");
                 alert.setHeaderText("Error Submitting Report");
-                alert.setContentText(r.message);
-
+                alert.setContentText("Lat/Long not valid");
                 alert.showAndWait();
+            }
+            else {
+                Response r = ReportHandler.postSourceReport(new SourceReport(mainApplication.getUsername(), latd, lond, type.getSelectionModel().getSelectedItem(), condition.getSelectionModel().getSelectedItem()), mainApplication.getCookie());
+                if (r.sucess == 1) {
+                    mainApplication.showMainScreen();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Report Submit Error");
+                    alert.setHeaderText("Error Submitting Report");
+                    alert.setContentText(r.message);
+
+                    alert.showAndWait();
+                }
             }
         }
         catch (NumberFormatException e){
