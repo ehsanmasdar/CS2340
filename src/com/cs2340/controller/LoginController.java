@@ -4,7 +4,6 @@ import com.cs2340.api.UserHandler;
 import com.cs2340.app.MainApp;
 import com.cs2340.model.Response;
 import com.cs2340.model.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -22,16 +21,20 @@ public class LoginController {
     @FXML
     private Button register;
 
-    @FXML
-    private void initialize() {
-    }
+    /**
+     * Inject Main App depencency
+     * @param m Main Application
+     */
     public void setMainApplication(MainApp m){
         mainApplication = m;
     }
 
-    public void handleSubmitPressed(ActionEvent actionEvent) {
+    /**
+     * Attempt login with provided credentials
+     */
+    public void handleSubmitPressed() {
         Response r = UserHandler.postLogin(new User(username.getText(),password.getText()));
-        if (r.sucess == 1){
+        if (r.success == 1){
             mainApplication.setCookie((String) r.data);
             mainApplication.setUsername(username.getText());
             mainApplication.showMainScreen();
@@ -46,7 +49,10 @@ public class LoginController {
         }
     }
 
-    public void handleRegisterPressed(ActionEvent actionEvent) {
+    /**
+     * Display registration screen
+     */
+    public void handleRegisterPressed() {
         mainApplication.showRegisterScreen();
     }
 }

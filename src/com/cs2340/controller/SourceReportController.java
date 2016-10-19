@@ -5,7 +5,6 @@ import com.cs2340.app.MainApp;
 import com.cs2340.model.Response;
 import com.cs2340.model.SourceReport;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -30,11 +29,19 @@ public class SourceReportController {
         type.setItems(FXCollections.observableArrayList(types));
         condition.setItems(FXCollections.observableArrayList(conditions));
     }
+
+    /**
+     * Inject Main App dependency
+     * @param m Main Application
+     */
     public void setMainApplication(MainApp m){
         mainApplication = m;
     }
 
-    public void handleSubmitPressed(ActionEvent actionEvent) {
+    /**
+     * Handle validating source report input and committing report to database
+     */
+    public void handleSubmitPressed() {
         try{
             Double latd = Double.parseDouble(lat.getText());
             Double lond = Double.parseDouble(lon.getText());
@@ -47,7 +54,7 @@ public class SourceReportController {
             }
             else {
                 Response r = ReportHandler.postSourceReport(new SourceReport(mainApplication.getUsername(), latd, lond, type.getSelectionModel().getSelectedItem(), condition.getSelectionModel().getSelectedItem()), mainApplication.getCookie());
-                if (r.sucess == 1) {
+                if (r.success == 1) {
                     mainApplication.showMainScreen();
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -69,7 +76,11 @@ public class SourceReportController {
         }
 
     }
-    public void handleCancelPressed (ActionEvent actionEvent){
+
+    /**
+     * Cancel a source report submission
+     */
+    public void handleCancelPressed (){
         mainApplication.showMainScreen();
     }
 }

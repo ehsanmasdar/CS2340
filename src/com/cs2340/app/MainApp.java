@@ -1,11 +1,9 @@
 package com.cs2340.app;
 
 import com.cs2340.controller.*;
-import com.cs2340.model.SourceReport;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;

@@ -8,6 +8,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ReportHandler {
+    /**
+     * Post Source Report creation to API Endpoint
+     * @param sourceReport Source Report to save
+     * @param cookie Authentication cookie
+     * @return API Response status
+     */
     public static Response postSourceReport(SourceReport sourceReport, String cookie) {
         try {
             JSONObject jsonResponse = Unirest.post(Constants.URL_BASE + "/api/report/source").header("Cookie", cookie)
@@ -26,6 +32,12 @@ public class ReportHandler {
             return new Response(0, "", null);
         }
     }
+
+    /**
+     * Get list of source reports submitted
+     * @param cookie Authentication cookie
+     * @return API Response with list of source reports if successful
+     */
     public static Response<SourceReport[]> getSourceReport(String cookie) {
         try {
             JSONArray jsonResponse = Unirest.get(Constants.URL_BASE + "/api/report/source").header("Cookie", cookie)

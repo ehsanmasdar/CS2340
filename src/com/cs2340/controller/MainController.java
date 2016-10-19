@@ -6,22 +6,41 @@ import javafx.event.ActionEvent;
 public class MainController {
     private MainApp mainApplication;
 
+    /**
+     * Inject Main App depencency
+     * @param m Main Application
+     */
     public void setMainApplication(MainApp m) {
         mainApplication = m;
     }
 
+    /**
+     * Clear session information on user logout
+     */
     public void handleLogout(ActionEvent actionEvent) {
         mainApplication.setCookie(null);
         mainApplication.setUsername(null);
         mainApplication.showLoginScreen();
     }
-    public void handleProfile(ActionEvent actionEvent) {
+
+    /**
+     * Open profile
+     */
+    public void handleProfile() {
         mainApplication.showProfileScreen();
     }
-    public void handleSourceReportSubmit(ActionEvent actionEvent){
+
+    /**
+     * Open Source Report creation
+     */
+    public void handleSourceReportSubmit(){
         mainApplication.showSourceReportScreen();
     }
-    public void handleSourceReportView (ActionEvent actionEvent){
+
+    /**
+     * Open Source Report list
+     */
+    public void handleSourceReportView (){
         mainApplication.showSourceReportViewScreen();
     }
 }

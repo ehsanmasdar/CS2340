@@ -6,7 +6,6 @@ import com.cs2340.model.AccessLevel;
 import com.cs2340.model.Response;
 import com.cs2340.model.User;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -32,19 +31,29 @@ public class RegisterController {
         levelField.getSelectionModel().selectFirst();
     }
 
+    /**
+     * Inject Main App dependency
+     * @param m Main Application
+     */
     public void setMainApplication(MainApp m){
         mainApplication = m;
     }
 
-    public void handleCancel(ActionEvent actionEvent) {
+    /**
+     * Cancel user registration
+     */
+    public void handleCancel() {
         mainApplication.showLoginScreen();
     }
 
-    public void handleRegisterSubmit(ActionEvent actionEvent) {
+    /**
+     * Validate and process user registration
+     */
+    public void handleRegisterSubmit() {
         if (password.getText().equals(passwordConfirm.getText())) {
             User u = new User(username.getText(), password.getText(), levelField.getSelectionModel().getSelectedItem());
             Response r = UserHandler.postRegister(u);
-            if (r.sucess == 1){
+            if (r.success == 1){
                 mainApplication.showLoginScreen();
             }
             else {

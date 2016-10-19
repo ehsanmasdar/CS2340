@@ -11,15 +11,16 @@ import javafx.scene.control.ListView;
 import java.util.ArrayList;
 
 public class SourceReportViewController {
-    private MainApp mainApplication;
 
     @FXML
     private ListView<SourceReport> sourceReportViewListView;
-
+    /**
+     * Inject Main App dependency
+     * @param m Main Application
+     */
     public void setMainApplication(MainApp m) {
-        mainApplication = m;
-        SourceReport[] sourceReports = ReportHandler.getSourceReport(mainApplication.getCookie()).data;
-        ArrayList<SourceReport> ReportList = new ArrayList<SourceReport>();
+        SourceReport[] sourceReports = ReportHandler.getSourceReport(m.getCookie()).data;
+        ArrayList<SourceReport> ReportList = new ArrayList<>();
         for(SourceReport r: sourceReports) {
             ReportList.add(r);
         }
