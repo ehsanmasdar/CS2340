@@ -1,7 +1,6 @@
 package com.cs2340.controller;
 
 import com.cs2340.app.MainApp;
-import javafx.event.ActionEvent;
 
 public class MainController {
     private MainApp mainApplication;
@@ -17,7 +16,7 @@ public class MainController {
     /**
      * Clear session information on user logout
      */
-    public void handleLogout(ActionEvent actionEvent) {
+    public void handleLogout() {
         mainApplication.setCookie(null);
         mainApplication.setUsername(null);
         mainApplication.showLoginScreen();

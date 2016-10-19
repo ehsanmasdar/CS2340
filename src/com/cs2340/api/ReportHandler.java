@@ -14,7 +14,7 @@ public class ReportHandler {
      * @param cookie Authentication cookie
      * @return API Response status
      */
-    public static Response postSourceReport(SourceReport sourceReport, String cookie) {
+    public static Response<String> postSourceReport(SourceReport sourceReport, String cookie) {
         try {
             JSONObject jsonResponse = Unirest.post(Constants.URL_BASE + "/api/report/source").header("Cookie", cookie)
                     .field("lat", sourceReport.lat)
@@ -23,13 +23,13 @@ public class ReportHandler {
                     .field("condition", sourceReport.condition)
                     .asJson().getBody().getObject();
             if (jsonResponse.has("message")) {
-                return new Response(jsonResponse.getInt("success"), jsonResponse.getString("message"), null);
+                return new Response<>(jsonResponse.getInt("success"), jsonResponse.getString("message"), null);
             } else {
-                return new Response(jsonResponse.getInt("success"), "", null);
+                return new Response<>(jsonResponse.getInt("success"), "", null);
             }
         } catch (UnirestException e) {
             e.printStackTrace();
-            return new Response(0, "", null);
+            return new Response<>(0, "", null);
         }
     }
 
@@ -42,7 +42,6 @@ public class ReportHandler {
         try {
             JSONArray jsonResponse = Unirest.get(Constants.URL_BASE + "/api/report/source").header("Cookie", cookie)
                     .asJson().getBody().getArray();
-            //System.out.println(jsonResponse.toString());
             SourceReport[] sourceReports = new SourceReport[jsonResponse.length()];
             for (int i = 0; i < jsonResponse.length(); i++){
                 JSONObject obj = jsonResponse.getJSONObject(i);

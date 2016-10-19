@@ -30,14 +30,11 @@ public class SourceReport {
 
     @Override
     public String toString(){
-        StringBuilder build = new StringBuilder();
-        build.append("Submitted by: " + name + "; ");
-        build.append("Location: (" + lat + ", " + lon + "); ");
-        build.append("Type: " + type + "; ");
-        build.append("Condition: " + condition + "; ");
-        build.append("Report Id: " + id +"; ");
-        build.append("Date: " + date);
-
-        return build.toString();
+         return "Submitted by: " + name + "; " +
+                "Location: (" + lat + ", " + lon + "); " +
+                "Type: " + type + "; " +
+                "Condition: " + condition + "; " +
+                "Report Id: " + id + "; " +
+                "Date: " + date;
     }
 }
