@@ -135,13 +135,16 @@ public class MainApp extends Application {
             MainController controller = loader.getController();
             controller.setMainApplication(this);
 
+
             // Set the com.cs2340.controller.app.MainApp App title
             mainScreen.setTitle("Main");
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(a);
             mainScreen.setScene(scene);
+            mainScreen.setResizable(false);
             mainScreen.show();
+            controller.setMap();
 
 
         } catch (IOException e) {
