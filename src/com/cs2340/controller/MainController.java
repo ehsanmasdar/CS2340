@@ -1,14 +1,18 @@
 package com.cs2340.controller;
 
+import com.cs2340.api.ReportHandler;
 import com.cs2340.app.MainApp;
+import com.cs2340.model.SourceReport;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
-import com.lynden.gmapsfx.javascript.object.GoogleMap;
-import com.lynden.gmapsfx.javascript.object.LatLong;
-import com.lynden.gmapsfx.javascript.object.MapOptions;
-import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
+import com.lynden.gmapsfx.javascript.event.StateEventHandler;
+import com.lynden.gmapsfx.javascript.event.UIEventHandler;
+import com.lynden.gmapsfx.javascript.event.UIEventType;
+import com.lynden.gmapsfx.javascript.object.*;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
+import netscape.javascript.JSObject;
+
 
 public class MainController implements MapComponentInitializedListener {
     @FXML
@@ -27,6 +31,9 @@ public class MainController implements MapComponentInitializedListener {
         mainApplication = m;;
     }
 
+    /**
+     * Set the Map object
+     */
     public void setMap(){
         mapView = new GoogleMapView();
         mapView.addMapInializedListener(this);
@@ -63,6 +70,9 @@ public class MainController implements MapComponentInitializedListener {
         mainApplication.showSourceReportViewScreen();
     }
 
+    /**
+     * Populate map with markers
+     */
     @Override
     public void mapInitialized() {
         mapView.addMapInializedListener(this);
@@ -85,5 +95,21 @@ public class MainController implements MapComponentInitializedListener {
                 .mapType(MapTypeIdEnum.TERRAIN);
 
         map = mapView.createMap(options);
+        for (SourceReport report : ReportHandler.getSourceReport(mainApplication.getCookie()).data){
+            InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
+            infoWindowOptions.content("Report for " + report.lat + "," + report.lon + "<br>"
+                    + "Condition: " + report.condition + "<br>"
+                    + "Type: " + report.type + "<br>");
+            InfoWindow infoWindow = new InfoWindow(infoWindowOptions);
+            MarkerOptions mo  = new MarkerOptions().position(new LatLong(report.lat,report.lon));
+            Marker marker = new Marker(mo);
+            map.addUIEventHandler(marker, UIEventType.click, new UIEventHandler() {
+                @Override
+                public void handle(JSObject jsObject) {
+                    infoWindow.open(map,marker);
+                }
+            });
+            map.addMarker(marker);
+        }
     }
 }
