@@ -26,7 +26,7 @@ public class PurityReportController {
 
     @FXML
     private ComboBox<String> qualityCondition;
-    private static final String[] conditions = {"Waste", "Treatable-Clear", "Treatable-Muddy", "Potable"};
+    private static final String[] conditions = {"Safe", "Treatable", "Unsafe"};
 
     @FXML
     private TextField qualityVirus;
