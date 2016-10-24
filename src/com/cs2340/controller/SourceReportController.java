@@ -13,35 +13,35 @@ import javafx.scene.input.MouseEvent;
 public class SourceReportController {
     private MainApp mainApplication;
     @FXML
-    private TextField lat;
+    private TextField sourceLat;
 
     @FXML
-    private TextField lon;
+    private TextField sourceLon;
 
     @FXML
-    private ComboBox<String> type;
+    private ComboBox<String> sourceType;
 
     @FXML
-    private ComboBox<String> condition;
+    private ComboBox<String> qualityCondition;
 
     private static final String[] types = { "Bottled", "Well", "Stream", "Lake", "Spring", "Other"};
     private static final String[] conditions = {"Waste", "Treatable-Clear", "Treatable-Muddy", "Potable"};
     @FXML
     private void initialize() {
-        type.setItems(FXCollections.observableArrayList(types));
-        condition.setItems(FXCollections.observableArrayList(conditions));
+        sourceType.setItems(FXCollections.observableArrayList(types));
+        qualityCondition.setItems(FXCollections.observableArrayList(conditions));
         //needed to make program not crash on certain machines
-        type.setOnMousePressed(new EventHandler<MouseEvent>(){
+        sourceType.setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                type.requestFocus();
+                sourceType.requestFocus();
             }
         });
         //needed to make program not crash on certain machines
-        condition.setOnMousePressed(new EventHandler<MouseEvent>(){
+        qualityCondition.setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                condition.requestFocus();
+                qualityCondition.requestFocus();
             }
         });
     }
@@ -59,8 +59,8 @@ public class SourceReportController {
      */
     public void handleSubmitPressed() {
         try{
-            Double latd = Double.parseDouble(lat.getText());
-            Double lond = Double.parseDouble(lon.getText());
+            Double latd = Double.parseDouble(sourceLat.getText());
+            Double lond = Double.parseDouble(sourceLon.getText());
             if ( latd > 90 || latd < -90 || lond > 180 || lond < -180){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Report Submit Error");
@@ -69,7 +69,7 @@ public class SourceReportController {
                 alert.showAndWait();
             }
             else {
-                Response r = ReportHandler.postSourceReport(new SourceReport(mainApplication.getUsername(), latd, lond, type.getSelectionModel().getSelectedItem(), condition.getSelectionModel().getSelectedItem()), mainApplication.getCookie());
+                Response r = ReportHandler.postSourceReport(new SourceReport(mainApplication.getUsername(), latd, lond, sourceType.getSelectionModel().getSelectedItem(), qualityCondition.getSelectionModel().getSelectedItem()), mainApplication.getCookie());
                 if (r.success == 1) {
                     mainApplication.showMainScreen();
                 } else {

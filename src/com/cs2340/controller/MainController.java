@@ -70,6 +70,16 @@ public class MainController implements MapComponentInitializedListener {
         mainApplication.showSourceReportViewScreen();
     }
 
+    public void handleQualityReportSubmit(){
+        //dont show window if incorrect AccessLevel
+        mainApplication.showQualityReportScreen();
+    }
+
+    public void handleQualityReportView(){
+        //dont show window if incorrect AccessLevel
+        mainApplication.showQualityReportViewScreen();
+    }
+
     /**
      * Populate map with markers
      */

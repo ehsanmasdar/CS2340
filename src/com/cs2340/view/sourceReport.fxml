@@ -13,25 +13,25 @@
       <HBox prefHeight="31.0" prefWidth="600.0">
          <children>
             <Label text="Latitude" />
-            <TextField fx:id="lat" />
+            <TextField fx:id="sourceLat" />
          </children>
       </HBox>
       <HBox prefHeight="31.0" prefWidth="600.0">
          <children>
             <Label text="Longitude" />
-            <TextField fx:id="lon" />
+            <TextField fx:id="sourceLon" />
          </children>
       </HBox>
       <HBox prefHeight="31.0" prefWidth="600.0">
          <children>
             <Label text="Type" />
-            <ComboBox fx:id="type" prefHeight="27.0" prefWidth="190.0" />
+            <ComboBox fx:id="sourceType" prefHeight="27.0" prefWidth="190.0" />
          </children>
       </HBox>
       <HBox prefHeight="31.0" prefWidth="600.0">
          <children>
             <Label text="Condition" />
-            <ComboBox fx:id="condition" prefHeight="27.0" prefWidth="176.0" />
+            <ComboBox fx:id="qualityCondition" prefHeight="27.0" prefWidth="176.0" />
          </children>
       </HBox>
       <Button fx:id="submit" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit" />

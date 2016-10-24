@@ -214,6 +214,66 @@ public class MainApp extends Application {
         }
     }
 
+    public void showQualityReportScreen(){
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("../view/qualityReport.fxml"));
+            VBox a = loader.load();
+
+            // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
+            QualityReportController controller = loader.getController();
+            controller.setMainApplication(this);
+
+            // Set the com.cs2340.controller.app.MainApp App title
+            mainScreen.setTitle("Enter a new Source Report");
+
+            // Show the scene containing the root layout.
+            /*Stage altStage = new Stage();
+            Scene scene = new Scene(a);
+            //opens in new window
+            altStage.setScene(scene);
+            altStage.show();*/
+            Scene scene = new Scene(a);
+            mainScreen.setScene(scene);
+            mainScreen.show();
+
+
+        } catch (IOException e) {
+            //error on load, so log it
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for MainScreen!!");
+            e.printStackTrace();
+        }
+    }
+    public void showQualityReportViewScreen(){
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("../view/qualityReportView.fxml"));
+            VBox a = loader.load();
+
+            // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
+            QualityReportViewController controller = loader.getController();
+            controller.setMainApplication(this);
+
+            // Set the com.cs2340.controller.app.MainApp App title
+            mainScreen.setTitle("Source Reports");
+
+            // Show the scene containing the root layout.
+            Stage altStage = new Stage();
+            Scene scene = new Scene(a);
+            //opens in new window
+            altStage.setScene(scene);
+            altStage.show();
+
+
+        } catch (IOException e) {
+            //error on load, so log it
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for MainScreen!!");
+            e.printStackTrace();
+        }
+    }
+
     public void setCookie(String cookie) {
         this.cookie = cookie;
     }

@@ -56,13 +56,13 @@ public class QualityReportController {
     }
 
     @FXML
-    void handleCancelPressed(ActionEvent event) {
+    void handleSubmitPressed(ActionEvent event) {
 
     }
 
     @FXML
-    void handleSubmitPressed(ActionEvent event) {
-
+    void handleCancelPressed(ActionEvent event) {
+        mainApplication.showMainScreen();
     }
 
 }
