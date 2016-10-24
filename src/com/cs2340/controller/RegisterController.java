@@ -31,7 +31,7 @@ public class RegisterController {
         levelField.getItems().clear();
         levelField.setItems(FXCollections.observableArrayList(AccessLevel.values()));
         levelField.getSelectionModel().selectFirst();
-
+        //needed to make program not crash on certain machines
         levelField.setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {

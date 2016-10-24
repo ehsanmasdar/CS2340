@@ -30,12 +30,14 @@ public class SourceReportController {
     private void initialize() {
         type.setItems(FXCollections.observableArrayList(types));
         condition.setItems(FXCollections.observableArrayList(conditions));
+        //needed to make program not crash on certain machines
         type.setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
                 type.requestFocus();
             }
         });
+        //needed to make program not crash on certain machines
         condition.setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
@@ -59,7 +61,7 @@ public class SourceReportController {
         try{
             Double latd = Double.parseDouble(lat.getText());
             Double lond = Double.parseDouble(lon.getText());
-            if ( latd > 90 || latd < -90 || lond > 120 || lond < -120){
+            if ( latd > 90 || latd < -90 || lond > 180 || lond < -180){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Report Submit Error");
                 alert.setHeaderText("Error Submitting Report");
