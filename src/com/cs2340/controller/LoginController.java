@@ -6,7 +6,6 @@ import com.cs2340.model.Response;
 import com.cs2340.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -16,10 +15,6 @@ public class LoginController {
     private TextField username;
     @FXML
     private PasswordField password;
-    @FXML
-    private Button submit;
-    @FXML
-    private Button register;
 
     /**
      * Inject Main App depencency
@@ -33,10 +28,10 @@ public class LoginController {
      * Attempt login with provided credentials
      */
     public void handleSubmitPressed() {
-        Response r = UserHandler.postLogin(new User(username.getText(),password.getText()));
+        Response<String> r = UserHandler.postLogin(new User(username.getText(),password.getText()));
         if (r.success == 1){
-            mainApplication.setCookie((String) r.data);
-            mainApplication.setUsername(username.getText());
+            mainApplication.setCookie(r.data);
+            mainApplication.setUser(UserHandler.getUser(r.data).data);
             mainApplication.showMainScreen();
         }
         else {

@@ -2,14 +2,16 @@ package com.cs2340.controller;
 
 import com.cs2340.api.ReportHandler;
 import com.cs2340.app.MainApp;
+import com.cs2340.model.AccessLevel;
 import com.cs2340.model.SourceReport;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
-import com.lynden.gmapsfx.javascript.event.StateEventHandler;
 import com.lynden.gmapsfx.javascript.event.UIEventHandler;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import netscape.javascript.JSObject;
 
@@ -17,6 +19,10 @@ import netscape.javascript.JSObject;
 public class MainController implements MapComponentInitializedListener {
     @FXML
     private BorderPane mainViewBorderPane;
+    @FXML
+    private Button qualityReportSubmit;
+    @FXML
+    private Button qualityReportView;
 
     private GoogleMapView mapView;
     private GoogleMap map;
@@ -28,7 +34,16 @@ public class MainController implements MapComponentInitializedListener {
      * @param m Main Application
      */
     public void setMainApplication(MainApp m) {
-        mainApplication = m;;
+        mainApplication = m;
+        switch (mainApplication.getUser().level){
+            case WORKER:
+                qualityReportView.setVisible(false);
+                break;
+            case USER:
+                qualityReportView.setVisible(false);
+                qualityReportSubmit.setVisible(false);
+                break;
+        }
     }
 
     /**
@@ -45,7 +60,7 @@ public class MainController implements MapComponentInitializedListener {
      */
     public void handleLogout() {
         mainApplication.setCookie(null);
-        mainApplication.setUsername(null);
+        mainApplication.setUser(null);
         mainApplication.showLoginScreen();
     }
 
@@ -105,21 +120,15 @@ public class MainController implements MapComponentInitializedListener {
                 .mapType(MapTypeIdEnum.TERRAIN);
 
         map = mapView.createMap(options);
-        for (SourceReport report : ReportHandler.getSourceReport(mainApplication.getCookie()).data){
-            InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
-            infoWindowOptions.content("Report for " + report.lat + "," + report.lon + "<br>"
-                    + "Condition: " + report.condition + "<br>"
-                    + "Type: " + report.type + "<br>");
-            InfoWindow infoWindow = new InfoWindow(infoWindowOptions);
-            MarkerOptions mo  = new MarkerOptions().position(new LatLong(report.lat,report.lon));
-            Marker marker = new Marker(mo);
-            map.addUIEventHandler(marker, UIEventType.click, new UIEventHandler() {
+        for (SourceReport report : ReportHandler.getSourceReports(mainApplication.getCookie()).data){
+            Marker m = report.getMarker();
+            map.addUIEventHandler(m, UIEventType.click, new UIEventHandler() {
                 @Override
                 public void handle(JSObject jsObject) {
-                    infoWindow.open(map,marker);
+                    report.getInfoWindow().open(map, m);
                 }
             });
-            map.addMarker(marker);
+            map.addMarker(m);
         }
     }
 }

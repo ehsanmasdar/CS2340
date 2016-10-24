@@ -31,8 +31,8 @@
                   <Button id="mainViewSubmitButton" mnemonicParsing="false" onAction="#handleSourceReportSubmit" text="Submit Source Report" />
                   <Button id="mainViewReportButton" mnemonicParsing="false" onAction="#handleSourceReportView" text="View Source Reports" />
                   <Separator prefHeight="11.0" prefWidth="137.0" />
-                  <Button mnemonicParsing="false" onAction="#handleQualityReportSubmit" text="Submit Quality Report" />
-                  <Button mnemonicParsing="false" onAction="#handleQualityReportView" text="View Quality Report" />
+                  <Button fx:id="qualityReportSubmit" mnemonicParsing="false" onAction="#handleQualityReportSubmit" text="Submit Quality Report" />
+                  <Button fx:id="qualityReportView" mnemonicParsing="false" onAction="#handleQualityReportView" text="View Quality Report" />
                </children>
             </VBox>
          </left>

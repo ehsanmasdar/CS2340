@@ -1,6 +1,8 @@
 package com.cs2340.model;
 
 
+import com.lynden.gmapsfx.javascript.object.*;
+
 public class SourceReport {
     private String name;
     public double lat;
@@ -28,6 +30,26 @@ public class SourceReport {
         this.date = date;
     }
 
+    /**
+     * Generate Map Marker
+     * @return Map Marker
+     */
+    public Marker getMarker(){
+        MarkerOptions mo  = new MarkerOptions().position(new LatLong(lat,lon));
+        return new Marker(mo);
+    }
+
+    /**
+     * Generate Information Window
+     * @return Information Window
+     */
+    public InfoWindow getInfoWindow(){
+        InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
+        infoWindowOptions.content("Report for " + lat + "," + lon + "<br>"
+                + "Condition: " + condition + "<br>"
+                + "Type: " + type + "<br>");
+        return  new InfoWindow(infoWindowOptions);
+    }
     @Override
     public String toString(){
          return "Submitted by: " + name + "; " +

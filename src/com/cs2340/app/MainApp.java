@@ -1,6 +1,7 @@
 package com.cs2340.app;
 
 import com.cs2340.controller.*;
+import com.cs2340.model.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,14 +22,14 @@ public class MainApp extends Application {
     }
 
     private String cookie;
-    private String username;
+    private User user;
 
-    public String getUsername() {
-        return username;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -222,7 +223,7 @@ public class MainApp extends Application {
             VBox a = loader.load();
 
             // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
-            QualityReportController controller = loader.getController();
+            PurityReportController controller = loader.getController();
             controller.setMainApplication(this);
 
             // Set the com.cs2340.controller.app.MainApp App title
@@ -253,7 +254,7 @@ public class MainApp extends Application {
             VBox a = loader.load();
 
             // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
-            QualityReportViewController controller = loader.getController();
+            PurityReportViewController controller = loader.getController();
             controller.setMainApplication(this);
 
             // Set the com.cs2340.controller.app.MainApp App title
