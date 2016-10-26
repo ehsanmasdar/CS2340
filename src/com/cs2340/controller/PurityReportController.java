@@ -2,42 +2,48 @@ package com.cs2340.controller;
 
 import com.cs2340.api.ReportHandler;
 import com.cs2340.app.MainApp;
+import com.cs2340.model.PurityReport;
 import com.cs2340.model.Response;
 import com.cs2340.model.SourceReport;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class SourceReportController {
+public class PurityReportController {
     private MainApp mainApplication;
     @FXML
-    private TextField sourceLat;
+    private TextField qualityLat;
 
     @FXML
-    private TextField sourceLon;
-
-    @FXML
-    private ComboBox<String> sourceType;
+    private TextField qualityLon;
 
     @FXML
     private ComboBox<String> qualityCondition;
+    private static final String[] conditions = {"Safe", "Treatable", "Unsafe"};
 
-    private static final String[] types = { "Bottled", "Well", "Stream", "Lake", "Spring", "Other"};
-    private static final String[] conditions = {"Waste", "Treatable-Clear", "Treatable-Muddy", "Potable"};
     @FXML
-    private void initialize() {
-        sourceType.setItems(FXCollections.observableArrayList(types));
+    private TextField qualityVirus;
+
+    @FXML
+    private TextField qualityContaminant;
+
+    @FXML
+    private Button qualitySubmit;
+
+    @FXML
+    private Button qualityCancel;
+
+    @FXML
+    public void initialize(){
         qualityCondition.setItems(FXCollections.observableArrayList(conditions));
-        //needed to make program not crash on certain machines
-        sourceType.setOnMousePressed(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-                sourceType.requestFocus();
-            }
-        });
-        //needed to make program not crash on certain machines
+        //needed so program doesn't crash on certain machines
         qualityCondition.setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
@@ -54,13 +60,11 @@ public class SourceReportController {
         mainApplication = m;
     }
 
-    /**
-     * Handle validating source report input and committing report to database
-     */
-    public void handleSubmitPressed() {
+    @FXML
+    void handleSubmitPressed(ActionEvent event) {
         try{
-            Double latd = Double.parseDouble(sourceLat.getText());
-            Double lond = Double.parseDouble(sourceLon.getText());
+            Double latd = Double.parseDouble(qualityLat.getText());
+            Double lond = Double.parseDouble(qualityLon.getText());
             if ( latd > 90 || latd < -90 || lond > 180 || lond < -180){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Report Submit Error");
@@ -69,7 +73,9 @@ public class SourceReportController {
                 alert.showAndWait();
             }
             else {
-                Response r = ReportHandler.postSourceReport(new SourceReport(mainApplication.getUser().username, latd, lond, sourceType.getSelectionModel().getSelectedItem(), qualityCondition.getSelectionModel().getSelectedItem()), mainApplication.getCookie());
+                Response r = ReportHandler.postPurityReport(new PurityReport(mainApplication.getUser().username, latd, lond,
+                        qualityCondition.getSelectionModel().getSelectedItem(), Integer.parseInt(qualityVirus.getText())
+                        , Integer.parseInt(qualityContaminant.getText())), mainApplication.getCookie());
                 if (r.success == 1) {
                     mainApplication.showMainScreen();
                 } else {
@@ -93,10 +99,9 @@ public class SourceReportController {
 
     }
 
-    /**
-     * Cancel a source report submission
-     */
-    public void handleCancelPressed (){
+    @FXML
+    void handleCancelPressed(ActionEvent event) {
         mainApplication.showMainScreen();
     }
+
 }

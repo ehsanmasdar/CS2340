@@ -1,6 +1,7 @@
 package com.cs2340.app;
 
 import com.cs2340.controller.*;
+import com.cs2340.model.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,14 +22,14 @@ public class MainApp extends Application {
     }
 
     private String cookie;
-    private String username;
+    private User user;
 
-    public String getUsername() {
-        return username;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -108,6 +109,11 @@ public class MainApp extends Application {
             mainScreen.setTitle("Profile");
 
             // Show the scene containing the root layout.
+            /*Stage altStage = new Stage();
+            Scene scene = new Scene(a);
+            //opens in new window
+            altStage.setScene(scene);
+            altStage.show();*/
             Scene scene = new Scene(a);
             mainScreen.setScene(scene);
             mainScreen.show();
@@ -130,13 +136,16 @@ public class MainApp extends Application {
             MainController controller = loader.getController();
             controller.setMainApplication(this);
 
+
             // Set the com.cs2340.controller.app.MainApp App title
             mainScreen.setTitle("Main");
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(a);
             mainScreen.setScene(scene);
+            mainScreen.setResizable(false);
             mainScreen.show();
+            controller.setMap();
 
 
         } catch (IOException e) {
@@ -161,6 +170,11 @@ public class MainApp extends Application {
             mainScreen.setTitle("Enter a new Source Report");
 
             // Show the scene containing the root layout.
+            /*Stage altStage = new Stage();
+            Scene scene = new Scene(a);
+            //opens in new window
+            altStage.setScene(scene);
+            altStage.show();*/
             Scene scene = new Scene(a);
             mainScreen.setScene(scene);
             mainScreen.show();
@@ -184,12 +198,74 @@ public class MainApp extends Application {
             controller.setMainApplication(this);
 
             // Set the com.cs2340.controller.app.MainApp App title
+            mainScreen.setTitle("Source Reports");
+
+            // Show the scene containing the root layout.
+            Stage altStage = new Stage();
+            Scene scene = new Scene(a);
+            //opens in new window
+            altStage.setScene(scene);
+            altStage.show();
+
+
+        } catch (IOException e) {
+            //error on load, so log it
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for MainScreen!!");
+            e.printStackTrace();
+        }
+    }
+
+    public void showQualityReportScreen(){
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("../view/qualityReport.fxml"));
+            VBox a = loader.load();
+
+            // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
+            PurityReportController controller = loader.getController();
+            controller.setMainApplication(this);
+
+            // Set the com.cs2340.controller.app.MainApp App title
             mainScreen.setTitle("Enter a new Source Report");
 
             // Show the scene containing the root layout.
+            /*Stage altStage = new Stage();
+            Scene scene = new Scene(a);
+            //opens in new window
+            altStage.setScene(scene);
+            altStage.show();*/
             Scene scene = new Scene(a);
             mainScreen.setScene(scene);
             mainScreen.show();
+
+
+        } catch (IOException e) {
+            //error on load, so log it
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for MainScreen!!");
+            e.printStackTrace();
+        }
+    }
+    public void showQualityReportViewScreen(){
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("../view/qualityReportView.fxml"));
+            VBox a = loader.load();
+
+            // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
+            PurityReportViewController controller = loader.getController();
+            controller.setMainApplication(this);
+
+            // Set the com.cs2340.controller.app.MainApp App title
+            mainScreen.setTitle("Source Reports");
+
+            // Show the scene containing the root layout.
+            Stage altStage = new Stage();
+            Scene scene = new Scene(a);
+            //opens in new window
+            altStage.setScene(scene);
+            altStage.show();
 
 
         } catch (IOException e) {

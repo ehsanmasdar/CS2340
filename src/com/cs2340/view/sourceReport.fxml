@@ -7,31 +7,31 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="249.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs2340.controller.SourceReportController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs2340.controller.SourceReportController">
    <children>
-      <Label prefHeight="25.0" prefWidth="154.0" text="Submit Water Source Report:" />
+      <Label text="Submit Water Source Report:" />
       <HBox prefHeight="31.0" prefWidth="600.0">
          <children>
             <Label text="Latitude" />
-            <TextField fx:id="lat" />
+            <TextField fx:id="sourceLat" />
          </children>
       </HBox>
       <HBox prefHeight="31.0" prefWidth="600.0">
          <children>
             <Label text="Longitude" />
-            <TextField fx:id="lon" />
+            <TextField fx:id="sourceLon" />
          </children>
       </HBox>
       <HBox prefHeight="31.0" prefWidth="600.0">
          <children>
             <Label text="Type" />
-            <ComboBox fx:id="type" prefHeight="27.0" prefWidth="190.0" />
+            <ComboBox fx:id="sourceType" prefHeight="27.0" prefWidth="190.0" />
          </children>
       </HBox>
       <HBox prefHeight="31.0" prefWidth="600.0">
          <children>
             <Label text="Condition" />
-            <ComboBox fx:id="condition" prefHeight="27.0" prefWidth="176.0" />
+            <ComboBox fx:id="qualityCondition" prefHeight="27.0" prefWidth="176.0" />
          </children>
       </HBox>
       <Button fx:id="submit" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit" />

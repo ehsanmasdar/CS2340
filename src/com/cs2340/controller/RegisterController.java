@@ -6,12 +6,13 @@ import com.cs2340.model.AccessLevel;
 import com.cs2340.model.Response;
 import com.cs2340.model.User;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 
 public class RegisterController {
@@ -30,21 +31,38 @@ public class RegisterController {
         levelField.getItems().clear();
         levelField.setItems(FXCollections.observableArrayList(AccessLevel.values()));
         levelField.getSelectionModel().selectFirst();
+        //needed to make program not crash on certain machines
+        levelField.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                levelField.requestFocus();
+            }
+        });
     }
 
+    /**
+     * Inject Main App dependency
+     * @param m Main Application
+     */
     public void setMainApplication(MainApp m){
         mainApplication = m;
     }
 
-    public void handleCancel(ActionEvent actionEvent) {
+    /**
+     * Cancel user registration
+     */
+    public void handleCancel() {
         mainApplication.showLoginScreen();
     }
 
-    public void handleRegisterSubmit(ActionEvent actionEvent) {
+    /**
+     * Validate and process user registration
+     */
+    public void handleRegisterSubmit() {
         if (password.getText().equals(passwordConfirm.getText())) {
             User u = new User(username.getText(), password.getText(), levelField.getSelectionModel().getSelectedItem());
             Response r = UserHandler.postRegister(u);
-            if (r.sucess == 1){
+            if (r.success == 1){
                 mainApplication.showLoginScreen();
             }
             else {

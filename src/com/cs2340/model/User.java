@@ -18,4 +18,9 @@ public class User {
         this.username = username;
         this.password = password;
     }
+
+    public User(String username, AccessLevel level) {
+        this.username = username;
+        this.level = level;
+    }
 }

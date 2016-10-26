@@ -1,5 +1,6 @@
 package com.cs2340.api;
 
+import com.cs2340.model.AccessLevel;
 import com.cs2340.model.Profile;
 import com.cs2340.model.Response;
 import com.cs2340.model.User;
@@ -10,23 +11,34 @@ import com.mashape.unirest.http.HttpResponse;
 import org.json.JSONObject;
 
 public class UserHandler {
-    public static Response postRegister(User user){
+    /**
+     * Post user registration to API Endpoint
+     * @param user User registration to create
+     * @return API response status
+     */
+    public static Response<String> postRegister(User user){
         try {
             JSONObject jsonResponse = Unirest.post(Constants.URL_BASE + "/api/user/register")
                     .field("username", user.username)
                     .field("password", user.password)
                     .field("level", user.level).asJson().getBody().getObject();
             if (jsonResponse.has("message")){
-                return new Response(jsonResponse.getInt("success"), jsonResponse.getString("message"), null);
+                return new Response<>(jsonResponse.getInt("success"), jsonResponse.getString("message"), null);
             }
             else{
-                return new Response(jsonResponse.getInt("success"), "", null);
+                return new Response<>(jsonResponse.getInt("success"), "", null);
             }
         } catch (UnirestException e) {
             e.printStackTrace();
-            return new Response(0,"",null);
+            return new Response<>(0,"",null);
         }
     }
+
+    /**
+     * Post user login request to API Endpoint
+     * @param user User to login
+     * @return API Response status
+     */
     public static Response<String> postLogin(User user){
         try {
             MultipartBody resp = Unirest.post(Constants.URL_BASE + "/api/user/login")
@@ -36,17 +48,24 @@ public class UserHandler {
             HttpResponse response = resp.asString();
             String cookie = response.getHeaders().getFirst("Set-Cookie");
             if (jsonResponse.has("message")){
-                return new Response(jsonResponse.getInt("success"), jsonResponse.getString("message"), null);
+                return new Response<>(jsonResponse.getInt("success"), jsonResponse.getString("message"), null);
             }
             else{
-                return new Response<String>(jsonResponse.getInt("success"), "", cookie);
+                return new Response<>(jsonResponse.getInt("success"), "", cookie);
             }
         } catch (UnirestException e) {
             e.printStackTrace();
-            return new Response(0,"",null);
+            return new Response<>(0,"",null);
         }
     }
-    public static Response postProfile(Profile p, String cookie){
+
+    /**
+     * Create or update user profile
+     * @param p Updated profile object
+     * @param cookie Authentication cookie
+     * @return API Response status
+     */
+    public static Response<String> postProfile(Profile p, String cookie){
         try {
             JSONObject jsonResponse = Unirest.post(Constants.URL_BASE + "/api/user/profile").header("Cookie", cookie)
                     .field("firstname", p.name)
@@ -55,32 +74,60 @@ public class UserHandler {
                     .field("email", p.email)
                     .asJson().getBody().getObject();
             if (jsonResponse.has("message")){
-                return new Response(jsonResponse.getInt("success"), jsonResponse.getString("message"), null);
+                return new Response<>(jsonResponse.getInt("success"), jsonResponse.getString("message"), null);
             }
             else{
-                return new Response(jsonResponse.getInt("success"), "", null);
+                return new Response<>(jsonResponse.getInt("success"), "", null);
             }
         } catch (UnirestException e) {
             e.printStackTrace();
-            return new Response(0,"",null);
+            return new Response<>(0,"",null);
         }
     }
+
+    /**
+     * Get user profile
+     * @param cookie Autentication cookie
+     * @return API Response with user profile if successful
+     */
     public static Response<Profile> getProfile(String cookie){
         try {
             JSONObject jsonResponse = Unirest.get(Constants.URL_BASE + "/api/user/profile").header("Cookie", cookie).asJson().getBody().getObject();
             if (jsonResponse.getInt("success") == 1){
                 JSONObject data = jsonResponse.getJSONObject("data");
                 if (data.has("firstname"))
-                    return new Response<Profile>(jsonResponse.getInt("success"), "", new Profile(data.getString("firstname"), data.getString("address"), data.getString("email")));
-                return new Response<Profile>(jsonResponse.getInt("success"), "", new Profile("","",""));
+                    return new Response<>(jsonResponse.getInt("success"), "", new Profile(data.getString("firstname"), data.getString("address"), data.getString("email")));
+                return new Response<>(jsonResponse.getInt("success"), "", new Profile("","",""));
             }
             else{
                 System.out.println(jsonResponse.getString("message"));
-                return new Response(jsonResponse.getInt("success"), "", null);
+                return new Response<>(jsonResponse.getInt("success"), "", null);
             }
         } catch (UnirestException e) {
             e.printStackTrace();
-            return new Response(0,"",null);
+            return new Response<>(0,"",null);
+        }
+    }
+
+    /**
+     * Get user object
+     * @param cookie Autentication cookie
+     * @return API Response with user object if successful
+     */
+    public static Response<User> getUser(String cookie){
+        try {
+            JSONObject jsonResponse = Unirest.get(Constants.URL_BASE + "/api/user/").header("Cookie", cookie).asJson().getBody().getObject();
+            if (jsonResponse.getInt("success") == 1){
+                JSONObject user = jsonResponse.getJSONObject("user");
+                return new Response<>(jsonResponse.getInt("success"), "", new User(user.getString("username"), AccessLevel.valueOf(user.getString("level").toUpperCase())));
+            }
+            else{
+                System.out.println(jsonResponse.getString("message"));
+                return new Response<>(jsonResponse.getInt("success"), "", null);
+            }
+        } catch (UnirestException e) {
+            e.printStackTrace();
+            return new Response<>(0,"",null);
         }
     }
 }

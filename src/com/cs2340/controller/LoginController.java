@@ -4,10 +4,8 @@ import com.cs2340.api.UserHandler;
 import com.cs2340.app.MainApp;
 import com.cs2340.model.Response;
 import com.cs2340.model.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -17,23 +15,23 @@ public class LoginController {
     private TextField username;
     @FXML
     private PasswordField password;
-    @FXML
-    private Button submit;
-    @FXML
-    private Button register;
 
-    @FXML
-    private void initialize() {
-    }
+    /**
+     * Inject Main App depencency
+     * @param m Main Application
+     */
     public void setMainApplication(MainApp m){
         mainApplication = m;
     }
 
-    public void handleSubmitPressed(ActionEvent actionEvent) {
-        Response r = UserHandler.postLogin(new User(username.getText(),password.getText()));
-        if (r.sucess == 1){
-            mainApplication.setCookie((String) r.data);
-            mainApplication.setUsername(username.getText());
+    /**
+     * Attempt login with provided credentials
+     */
+    public void handleSubmitPressed() {
+        Response<String> r = UserHandler.postLogin(new User(username.getText(),password.getText()));
+        if (r.success == 1){
+            mainApplication.setCookie(r.data);
+            mainApplication.setUser(UserHandler.getUser(r.data).data);
             mainApplication.showMainScreen();
         }
         else {
@@ -46,7 +44,10 @@ public class LoginController {
         }
     }
 
-    public void handleRegisterPressed(ActionEvent actionEvent) {
+    /**
+     * Display registration screen
+     */
+    public void handleRegisterPressed() {
         mainApplication.showRegisterScreen();
     }
 }
