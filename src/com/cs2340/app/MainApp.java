@@ -2,6 +2,7 @@ package com.cs2340.app;
 
 import com.cs2340.controller.*;
 import com.cs2340.model.User;
+import com.lynden.gmapsfx.javascript.object.LatLong;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -156,6 +157,10 @@ public class MainApp extends Application {
     }
 
     public void showSourceReportScreen() {
+        showSourceReportScreen(new LatLong(0,0));
+    }
+
+    public void showSourceReportScreen(LatLong ll) {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
@@ -164,6 +169,7 @@ public class MainApp extends Application {
 
             // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
             SourceReportController controller = loader.getController();
+            controller.setSourceLatLon(ll);
             controller.setMainApplication(this);
 
             // Set the com.cs2340.controller.app.MainApp App title

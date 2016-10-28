@@ -9,6 +9,8 @@ import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventHandler;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
+import com.lynden.gmapsfx.javascript.JavascriptObject;
+import com.lynden.gmapsfx.javascript.object.GMapObjectType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -114,15 +116,15 @@ public class MainController implements MapComponentInitializedListener {
         LatLong center = new LatLong(33.7490, -84.3880);
 
         options.center(center)
-                .zoom(9)
+                .zoom(2)
                 .overviewMapControl(false)
-                .panControl(false)
+                .panControl(true)
                 .rotateControl(false)
                 .scaleControl(false)
                 .streetViewControl(false)
-                .zoomControl(false)
+                .zoomControl(true)
                 .mapType(MapTypeIdEnum.TERRAIN);
-
+        mapView.setDisableDoubleClick(true);
         map = mapView.createMap(options);
         for (SourceReport report : ReportHandler.getSourceReports(mainApplication.getCookie()).data){
             Marker m = report.getMarker();
@@ -134,5 +136,10 @@ public class MainController implements MapComponentInitializedListener {
             });
             map.addMarker(m);
         }
+        map.addUIEventHandler(UIEventType.click, (JSObject e) -> {
+            LatLong ll = new LatLong((JSObject) e.getMember("latLng"));
+            System.out.println("LatLong: lat: " + ll.getLatitude() + " lng: "+ ll.getLongitude());
+            mainApplication.showSourceReportScreen(ll);
+        });
     }
 }
