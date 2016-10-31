@@ -4,6 +4,7 @@ import com.cs2340.api.ReportHandler;
 import com.cs2340.app.MainApp;
 import com.cs2340.model.Response;
 import com.cs2340.model.SourceReport;
+import com.lynden.gmapsfx.javascript.object.LatLong;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -44,6 +45,10 @@ public class SourceReportController {
                 qualityCondition.requestFocus();
             }
         });
+        if(latVal!=0&&lonVal!=0){
+            sourceLat.setText(latVal + "");
+            sourceLon.setText(lonVal + "");
+        }
     }
 
     /**
@@ -52,6 +57,19 @@ public class SourceReportController {
      */
     public void setMainApplication(MainApp m){
         mainApplication = m;
+    }
+
+    double latVal = 0;
+    double lonVal = 0;
+    /**
+     * Sets lat and lon values for when report is added by clicking the map
+     * @param ll object containing lat and lon values
+     */
+    public void setSourceLatLon(LatLong ll){
+        latVal = ll.getLatitude();
+        lonVal = ll.getLongitude();
+        sourceLat.setText(latVal + "");
+        sourceLon.setText(lonVal + "");
     }
 
     /**

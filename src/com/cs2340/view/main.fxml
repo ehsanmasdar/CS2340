@@ -25,7 +25,7 @@
             </HBox>
          </top>
          <left>
-            <VBox prefHeight="365.0" prefWidth="137.0" BorderPane.alignment="CENTER">
+            <VBox BorderPane.alignment="CENTER">
                <children>
                   <Region prefHeight="200.0" prefWidth="200.0" />
                   <Button id="mainViewSubmitButton" mnemonicParsing="false" onAction="#handleSourceReportSubmit" text="Submit Source Report" />
