@@ -160,7 +160,7 @@ public class MainApp extends Application {
         showSourceReportScreen(new LatLong(0,0));
     }
 
-    public void showSourceReportScreen(LatLong ll) {
+    public void showSourceReportScreen(LatLong location) {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
@@ -169,7 +169,7 @@ public class MainApp extends Application {
 
             // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
             SourceReportController controller = loader.getController();
-            controller.setSourceLatLon(ll);
+            controller.setSourceLatLon(location);
             controller.setMainApplication(this);
 
             // Set the com.cs2340.controller.app.MainApp App title
