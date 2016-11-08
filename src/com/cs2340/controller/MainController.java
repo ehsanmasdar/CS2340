@@ -25,6 +25,8 @@ public class MainController implements MapComponentInitializedListener {
     private Button qualityReportSubmit;
     @FXML
     private Button qualityReportView;
+    @FXML
+    private Button historySetup;
 
     private GoogleMapView mapView;
     private GoogleMap map;
@@ -41,13 +43,16 @@ public class MainController implements MapComponentInitializedListener {
             case ADMIN:
                 qualityReportView.setVisible(false);
                 qualityReportSubmit.setVisible(false);
+                historySetup.setVisible(false);
                 break;
             case WORKER:
                 qualityReportView.setVisible(false);
+                historySetup.setVisible(false);
                 break;
             case USER:
                 qualityReportView.setVisible(false);
                 qualityReportSubmit.setVisible(false);
+                historySetup.setVisible(false);
                 break;
         }
     }
@@ -89,6 +94,13 @@ public class MainController implements MapComponentInitializedListener {
      */
     public void handleSourceReportView (){
         mainApplication.showSourceReportViewScreen();
+    }
+
+    /**
+     * Open History Report setup
+     */
+    public void handleHistorySetup (){
+        mainApplication.showHistorySetup();
     }
 
     public void handleQualityReportSubmit(){

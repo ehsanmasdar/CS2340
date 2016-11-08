@@ -280,6 +280,31 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
+    public void showHistorySetup(){
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("../view/historySetup.fxml"));
+            VBox a = loader.load();
+
+            // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
+            HistorySetupController controller = loader.getController();
+            controller.setMainApplication(this);
+
+            // Set the com.cs2340.controller.app.MainApp App title
+            mainScreen.setTitle("History Setup");
+
+            Scene scene = new Scene(a);
+            mainScreen.setScene(scene);
+            mainScreen.show();
+
+
+        } catch (IOException e) {
+            //error on load, so log it
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for MainScreen!!");
+            e.printStackTrace();
+        }
+    }
 
     public void setCookie(String cookie) {
         this.cookie = cookie;
