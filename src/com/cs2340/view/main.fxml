@@ -33,6 +33,9 @@
                   <Separator prefHeight="11.0" prefWidth="137.0" />
                   <Button fx:id="qualityReportSubmit" mnemonicParsing="false" onAction="#handleQualityReportSubmit" text="Submit Quality Report" />
                   <Button fx:id="qualityReportView" mnemonicParsing="false" onAction="#handleQualityReportView" text="View Quality Report" />
+                  <Separator prefHeight="11.0" prefWidth="137.0" />
+                  <Button fx:id="historySetup" mnemonicParsing="false" onAction="#handleHistorySetup" text="View Historical Report" />
+
                </children>
             </VBox>
          </left>

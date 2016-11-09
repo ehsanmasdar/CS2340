@@ -7,7 +7,8 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="191.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.ComboBox?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="191.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs2340.controller.HistorySetupController">
    <children>
       <HBox prefHeight="34.0" prefWidth="600.0">
          <children>
@@ -27,17 +28,22 @@
       </HBox>
       <HBox prefHeight="34.0" prefWidth="600.0">
          <children>
-            <Label text="Begin Year" />
-            <TextField fx:id="histSetupMinYear" />
-            <Label text="End Year" />
-            <TextField fx:id="histSetupMaxYear" />
+            <Label text="Year" />
+            <TextField fx:id="year" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="histSetupSubmit" mnemonicParsing="false" text="Submit" />
-            <Button fx:id="histSetupCancel" mnemonicParsing="false" text="Cancel" />
+            <Label text="Type of Report" />
+            <ComboBox fx:id="type"/>
          </children>
       </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="histSetupSubmit" onAction="#handleSubmitPressed" mnemonicParsing="false" text="Submit" />
+            <Button fx:id="histSetupCancel" onAction="#handleCancelPressed" mnemonicParsing="false" text="Cancel" />
+         </children>
+      </HBox>
+
    </children>
 </VBox>
