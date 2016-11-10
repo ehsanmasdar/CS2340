@@ -1,47 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<?import javafx.scene.control.ComboBox?>
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="191.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs2340.controller.HistorySetupController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="191.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs2340.controller.HistorySetupController">
    <children>
-      <HBox prefHeight="34.0" prefWidth="600.0">
+      <HBox prefHeight="25.0">
          <children>
-            <Label text="Min Lattitude" />
+            <Label prefHeight="17.0" text="Min Lattitude" />
             <TextField fx:id="histSetupMinLat" />
-            <Label text="Max Lattitude" />
+            <Label prefHeight="17.0" text="Max Lattitude" />
             <TextField fx:id="histSetupMaxLat" />
          </children>
       </HBox>
-      <HBox prefHeight="34.0" prefWidth="600.0">
+      <HBox prefHeight="34.0">
          <children>
-            <Label text="Min Longitude" />
+            <Label prefHeight="17.0" text="Min Longitude" />
             <TextField fx:id="histSetupMinLon" />
-            <Label text="Max Longitude" />
+            <Label prefHeight="17.0" text="Max Longitude" />
             <TextField fx:id="histSetupMaxLon" />
          </children>
       </HBox>
       <HBox prefHeight="34.0" prefWidth="600.0">
          <children>
-            <Label text="Year" />
+            <Label prefHeight="17.0" text="Year" />
             <TextField fx:id="year" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Type of Report" />
-            <ComboBox fx:id="type"/>
+            <Label prefHeight="17.0" text="Type of Report" />
+            <ComboBox fx:id="type" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="histSetupSubmit" onAction="#handleSubmitPressed" mnemonicParsing="false" text="Submit" />
-            <Button fx:id="histSetupCancel" onAction="#handleCancelPressed" mnemonicParsing="false" text="Cancel" />
+            <Button fx:id="histSetupSubmit" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit" />
+            <Button fx:id="histSetupCancel" mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel" />
          </children>
       </HBox>
 
