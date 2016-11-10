@@ -25,9 +25,9 @@ public class ProfileController {
     public void setMainApplication(MainApp m) {
         mainApplication = m;
         Profile p = UserHandler.getProfile(mainApplication.getCookie()).getData();
-        profileTitleText.setText(p.name);
-        profileAddressText.setText(p.address);
-        profileEmailText.setText(p.email);
+        profileTitleText.setText(p.getName());
+        profileAddressText.setText(p.getAddress());
+        profileEmailText.setText(p.getEmail());
     }
 
     /**

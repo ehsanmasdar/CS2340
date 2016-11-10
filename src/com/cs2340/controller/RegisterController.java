@@ -6,13 +6,11 @@ import com.cs2340.model.AccessLevel;
 import com.cs2340.model.Response;
 import com.cs2340.model.User;
 import javafx.collections.FXCollections;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 
 public class RegisterController {
@@ -32,12 +30,7 @@ public class RegisterController {
         levelField.setItems(FXCollections.observableArrayList(AccessLevel.values()));
         levelField.getSelectionModel().selectFirst();
         //needed to make program not crash on certain machines
-        levelField.setOnMousePressed(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-                levelField.requestFocus();
-            }
-        });
+        levelField.setOnMousePressed(event -> levelField.requestFocus());
     }
 
     /**

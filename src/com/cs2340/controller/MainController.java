@@ -5,7 +5,6 @@ import com.cs2340.app.MainApp;
 import com.cs2340.model.SourceReport;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
-import com.lynden.gmapsfx.javascript.event.UIEventHandler;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
 import javafx.fxml.FXML;
@@ -136,12 +135,7 @@ public class MainController implements MapComponentInitializedListener {
         map = mapView.createMap(options);
         for (SourceReport report : ReportHandler.getSourceReports(mainApplication.getCookie()).getData()){
             Marker m = report.getMarker();
-            map.addUIEventHandler(m, UIEventType.click, new UIEventHandler() {
-                @Override
-                public void handle(JSObject jsObject) {
-                    report.getInfoWindow().open(map, m);
-                }
-            });
+            map.addUIEventHandler(m, UIEventType.click, jsObject -> report.getInfoWindow().open(map, m));
             map.addMarker(m);
         }
         map.addUIEventHandler(UIEventType.click, (JSObject e) -> {

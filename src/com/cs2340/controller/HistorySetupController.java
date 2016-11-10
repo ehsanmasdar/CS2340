@@ -69,7 +69,6 @@ public class HistorySetupController {
                     alert.showAndWait();
                 }
                 else {
-                    //DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
                     //defining the axes
                     final NumberAxis xAxis = new NumberAxis();
                     final NumberAxis yAxis = new NumberAxis();
@@ -78,8 +77,8 @@ public class HistorySetupController {
                     yAxis.setLabel(type.getSelectionModel().getSelectedItem() + " PPM");
                     //creating the chart
                     final ScatterChart<Number,Number> scatterChart =
-                            new ScatterChart<Number,Number>(xAxis,yAxis);
-                    XYChart.Series series = new XYChart.Series();
+                            new ScatterChart<>(xAxis, yAxis);
+                    XYChart.Series<Number,Number> series = new XYChart.Series<>();
                     series.setName("Data");
 
                     // Loop through reports
