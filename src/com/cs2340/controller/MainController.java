@@ -35,7 +35,7 @@ public class MainController implements MapComponentInitializedListener {
      */
     public void setMainApplication(MainApp m) {
         mainApplication = m;
-        switch (mainApplication.getUser().level){
+        switch (mainApplication.getUser().getLevel()){
             case ADMIN:
                 qualityReportView.setVisible(false);
                 qualityReportSubmit.setVisible(false);
@@ -134,7 +134,7 @@ public class MainController implements MapComponentInitializedListener {
                 .mapType(MapTypeIdEnum.TERRAIN);
         mapView.setDisableDoubleClick(true);
         map = mapView.createMap(options);
-        for (SourceReport report : ReportHandler.getSourceReports(mainApplication.getCookie()).data){
+        for (SourceReport report : ReportHandler.getSourceReports(mainApplication.getCookie()).getData()){
             Marker m = report.getMarker();
             map.addUIEventHandler(m, UIEventType.click, new UIEventHandler() {
                 @Override

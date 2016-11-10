@@ -19,9 +19,9 @@ public class UserHandler {
     public static Response<String> postRegister(User user){
         try {
             JSONObject jsonResponse = Unirest.post(Constants.URL_BASE + "/api/user/register")
-                    .field("username", user.username)
-                    .field("password", user.password)
-                    .field("level", user.level).asJson().getBody().getObject();
+                    .field("username", user.getUsername())
+                    .field("password", user.getPassword())
+                    .field("level", user.getLevel()).asJson().getBody().getObject();
             if (jsonResponse.has("message")){
                 return new Response<>(jsonResponse.getInt("success"), jsonResponse.getString("message"), null);
             }
@@ -42,8 +42,8 @@ public class UserHandler {
     public static Response<String> postLogin(User user){
         try {
             MultipartBody resp = Unirest.post(Constants.URL_BASE + "/api/user/login")
-                    .field("username", user.username)
-                    .field("password", user.password);
+                    .field("username", user.getUsername())
+                    .field("password", user.getPassword());
             JSONObject jsonResponse = resp.asJson().getBody().getObject();
             HttpResponse response = resp.asString();
             String cookie = response.getHeaders().getFirst("Set-Cookie");

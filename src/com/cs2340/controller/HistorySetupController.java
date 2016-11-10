@@ -83,15 +83,15 @@ public class HistorySetupController {
                     series.setName("Data");
 
                     // Loop through reports
-                    for (PurityReport report : ReportHandler.getPurityReports(mainApplication.getCookie()).data){
-                        LocalDate dateTime = LocalDate.parse(report.date, DateTimeFormatter.ISO_DATE_TIME);
-                        if (report.lat  > minLat && report.lat < maxLat  && report.lon > minLon && report.lon < maxLon && dateTime.getYear() == yearNum){
+                    for (PurityReport report : ReportHandler.getPurityReports(mainApplication.getCookie()).getData()){
+                        LocalDate dateTime = LocalDate.parse(report.getDate(), DateTimeFormatter.ISO_DATE_TIME);
+                        if (report.getLat()  > minLat && report.getLat() < maxLat  && report.getLon() > minLon && report.getLon() < maxLon && dateTime.getYear() == yearNum){
                             if (type.getSelectionModel().getSelectedItem().equals("Virus")){
                                 System.out.println(report);
-                                series.getData().add(new XYChart.Data<>(dateTime.getDayOfYear(),report.virus));
+                                series.getData().add(new XYChart.Data<>(dateTime.getDayOfYear(),report.getVirus()));
                             }
                             else {
-                                series.getData().add(new XYChart.Data<>(dateTime.getMonthValue(),report.contaminant));
+                                series.getData().add(new XYChart.Data<>(dateTime.getMonthValue(),report.getContaminant()));
                             }
                         }
                     }
