@@ -3,7 +3,9 @@ package com.cs2340.controller;
 import com.cs2340.api.UserHandler;
 import com.cs2340.app.MainApp;
 import com.cs2340.model.Profile;
+import com.cs2340.model.Response;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
 
@@ -32,8 +34,17 @@ public class ProfileController {
      * Submit a profile change
      */
     public void handleProfileSubmit() {
-        UserHandler.postProfile(new Profile(profileTitleText.getText(),profileAddressText.getText(),profileEmailText.getText()),mainApplication.getCookie());
-        mainApplication.showMainScreen();
-    }
+        Response<String> resp = UserHandler.postProfile(new Profile(profileTitleText.getText(),profileAddressText.getText(),profileEmailText.getText()),mainApplication.getCookie());
+        if (resp.success == 1){
+            mainApplication.showMainScreen();
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Profile Update Error");
+            alert.setHeaderText("Error updating message");
+            alert.setContentText(resp.message);
 
+            alert.showAndWait();
+        }
+    }
 }
