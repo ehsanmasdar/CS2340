@@ -6,13 +6,11 @@ import com.cs2340.model.PurityReport;
 import com.cs2340.model.Response;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 public class PurityReportController {
     private MainApp mainApplication;
@@ -42,12 +40,7 @@ public class PurityReportController {
     public void initialize(){
         qualityCondition.setItems(FXCollections.observableArrayList(conditions));
         //needed so program doesn't crash on certain machines
-        qualityCondition.setOnMousePressed(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-                qualityCondition.requestFocus();
-            }
-        });
+        qualityCondition.setOnMousePressed(event -> qualityCondition.requestFocus());
     }
 
     /**

@@ -6,10 +6,8 @@ import com.cs2340.model.Response;
 import com.cs2340.model.SourceReport;
 import com.lynden.gmapsfx.javascript.object.LatLong;
 import javafx.collections.FXCollections;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 
 public class SourceReportController {
     private MainApp mainApplication;
@@ -32,19 +30,9 @@ public class SourceReportController {
         sourceType.setItems(FXCollections.observableArrayList(types));
         qualityCondition.setItems(FXCollections.observableArrayList(conditions));
         //needed to make program not crash on certain machines
-        sourceType.setOnMousePressed(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-                sourceType.requestFocus();
-            }
-        });
+        sourceType.setOnMousePressed(event -> sourceType.requestFocus());
         //needed to make program not crash on certain machines
-        qualityCondition.setOnMousePressed(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-                qualityCondition.requestFocus();
-            }
-        });
+        qualityCondition.setOnMousePressed(event -> qualityCondition.requestFocus());
         if(latVal!=0&&lonVal!=0){
             sourceLat.setText(latVal + "");
             sourceLon.setText(lonVal + "");

@@ -18,10 +18,10 @@ public class ReportHandler {
     public static Response<String> postSourceReport(SourceReport sourceReport, String cookie) {
         try {
             JSONObject jsonResponse = Unirest.post(Constants.URL_BASE + "/api/report/source").header("Cookie", cookie)
-                    .field("lat", sourceReport.lat)
-                    .field("long", sourceReport.lon)
-                    .field("type", sourceReport.type)
-                    .field("condition", sourceReport.condition)
+                    .field("lat", sourceReport.getLat())
+                    .field("long", sourceReport.getLon())
+                    .field("type", sourceReport.getType())
+                    .field("condition", sourceReport.getCondition())
                     .asJson().getBody().getObject();
             if (jsonResponse.has("message")) {
                 return new Response<>(jsonResponse.getInt("success"), jsonResponse.getString("message"), null);

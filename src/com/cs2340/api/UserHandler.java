@@ -68,10 +68,10 @@ public class UserHandler {
     public static Response<String> postProfile(Profile p, String cookie){
         try {
             JSONObject jsonResponse = Unirest.post(Constants.URL_BASE + "/api/user/profile").header("Cookie", cookie)
-                    .field("firstname", p.name)
+                    .field("firstname", p.getName())
                     .field("lastname", "empty")
-                    .field("address", p.address)
-                    .field("email", p.email)
+                    .field("address", p.getAddress())
+                    .field("email", p.getEmail())
                     .asJson().getBody().getObject();
             if (jsonResponse.has("message")){
                 return new Response<>(jsonResponse.getInt("success"), jsonResponse.getString("message"), null);
