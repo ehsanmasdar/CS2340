@@ -35,11 +35,6 @@ public class MainController implements MapComponentInitializedListener {
     public void setMainApplication(MainApp m) {
         mainApplication = m;
         switch (mainApplication.getUser().getLevel()){
-            case ADMIN:
-                qualityReportView.setVisible(false);
-                qualityReportSubmit.setVisible(false);
-                historySetup.setVisible(false);
-                break;
             case WORKER:
                 qualityReportView.setVisible(false);
                 historySetup.setVisible(false);
