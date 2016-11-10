@@ -5,19 +5,14 @@ import com.cs2340.app.MainApp;
 import com.cs2340.model.PurityReport;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -42,7 +37,7 @@ public class HistorySetupController {
 
 
     /**
-     * Inject Main App depencency
+     * Inject Main App dependency
      *
      * @param m Main Application
      */
@@ -64,7 +59,7 @@ public class HistorySetupController {
                 double maxLat = Double.parseDouble(histSetupMaxLat.getText());
                 double minLon = Double.parseDouble(histSetupMinLon.getText());
                 double maxLon = Double.parseDouble(histSetupMaxLon.getText());
-                int yearnum = Integer.parseInt(year.getText());
+                int yearNum = Integer.parseInt(year.getText());
                 if ( minLat > 90 || minLat < -90 || maxLat > 90 || maxLat < -90 || minLon > 180 || minLon < -180 || maxLon > 180 ||
                         maxLon < -180) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -74,7 +69,7 @@ public class HistorySetupController {
                     alert.showAndWait();
                 }
                 else {
-                    DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
+                    //DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
                     //defining the axes
                     final NumberAxis xAxis = new NumberAxis();
                     final NumberAxis yAxis = new NumberAxis();
@@ -89,7 +84,7 @@ public class HistorySetupController {
                     // Loop through reports
                     for (PurityReport report : ReportHandler.getPurityReports(mainApplication.getCookie()).data){
                         LocalDate dateTime = LocalDate.parse(report.date, DateTimeFormatter.ISO_DATE_TIME);
-                        if (report.lat  > minLat && report.lat < maxLat  && report.lon > minLon && report.lon < maxLon && dateTime.getYear() == yearnum){
+                        if (report.lat  > minLat && report.lat < maxLat  && report.lon > minLon && report.lon < maxLon && dateTime.getYear() == yearNum){
                             if (type.getSelectionModel().getSelectedItem().equals("Virus")){
                                 System.out.println(report);
                                 series.getData().add(new XYChart.Data<>(dateTime.getMonthValue(),report.virus));

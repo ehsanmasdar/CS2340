@@ -1,10 +1,10 @@
 package com.cs2340.model;
 
 public class PurityReport {
-    public String name;
+    private String name;
     public double lat;
     public double lon;
-    public String id;
+    private String id;
     public String date;
     public String condition;
     public int virus;

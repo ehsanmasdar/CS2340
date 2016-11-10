@@ -17,7 +17,7 @@ public class LoginController {
     private PasswordField password;
 
     /**
-     * Inject Main App depencency
+     * Inject Main App dependency
      * @param m Main Application
      */
     public void setMainApplication(MainApp m){

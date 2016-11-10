@@ -6,7 +6,7 @@ public enum AccessLevel {
     MANAGER("manager"),
     WORKER("worker"),
     USER("user");
-    private String level;
+    private final String level;
 
     AccessLevel(String level) {
         this.level = level;

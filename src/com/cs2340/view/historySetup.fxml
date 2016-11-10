@@ -12,9 +12,9 @@
    <children>
       <HBox prefHeight="34.0" prefWidth="600.0">
          <children>
-            <Label text="Min Lattitude" />
+            <Label text="Min Latitude" />
             <TextField fx:id="histSetupMinLat" />
-            <Label text="Max Lattitude" />
+            <Label text="Max Latitude" />
             <TextField fx:id="histSetupMaxLat" />
          </children>
       </HBox>

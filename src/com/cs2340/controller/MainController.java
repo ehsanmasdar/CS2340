@@ -2,16 +2,12 @@ package com.cs2340.controller;
 
 import com.cs2340.api.ReportHandler;
 import com.cs2340.app.MainApp;
-import com.cs2340.model.AccessLevel;
 import com.cs2340.model.SourceReport;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventHandler;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
-import com.lynden.gmapsfx.javascript.JavascriptObject;
-import com.lynden.gmapsfx.javascript.object.GMapObjectType;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -34,7 +30,7 @@ public class MainController implements MapComponentInitializedListener {
     private MainApp mainApplication;
 
     /**
-     * Inject Main App depencency
+     * Inject Main App dependency
      * @param m Main Application
      */
     public void setMainApplication(MainApp m) {
@@ -104,12 +100,12 @@ public class MainController implements MapComponentInitializedListener {
     }
 
     public void handleQualityReportSubmit(){
-        //dont show window if incorrect AccessLevel
+        //don't show window if incorrect AccessLevel
         mainApplication.showQualityReportScreen();
     }
 
     public void handleQualityReportView(){
-        //dont show window if incorrect AccessLevel
+        //don't show window if incorrect AccessLevel
         mainApplication.showQualityReportViewScreen();
     }
 

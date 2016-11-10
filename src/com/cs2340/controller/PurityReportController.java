@@ -4,9 +4,7 @@ import com.cs2340.api.ReportHandler;
 import com.cs2340.app.MainApp;
 import com.cs2340.model.PurityReport;
 import com.cs2340.model.Response;
-import com.cs2340.model.SourceReport;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -63,9 +61,9 @@ public class PurityReportController {
     @FXML
     void handleSubmitPressed(ActionEvent event) {
         try{
-            Double latd = Double.parseDouble(qualityLat.getText());
-            Double lond = Double.parseDouble(qualityLon.getText());
-            if ( latd > 90 || latd < -90 || lond > 180 || lond < -180){
+            Double latD = Double.parseDouble(qualityLat.getText());
+            Double lonD = Double.parseDouble(qualityLon.getText());
+            if ( latD > 90 || latD < -90 || lonD > 180 || lonD < -180){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Report Submit Error");
                 alert.setHeaderText("Error Submitting Report");
@@ -73,7 +71,7 @@ public class PurityReportController {
                 alert.showAndWait();
             }
             else {
-                Response r = ReportHandler.postPurityReport(new PurityReport(mainApplication.getUser().username, latd, lond,
+                Response r = ReportHandler.postPurityReport(new PurityReport(mainApplication.getUser().username, latD, lonD,
                         qualityCondition.getSelectionModel().getSelectedItem(), Integer.parseInt(qualityVirus.getText())
                         , Integer.parseInt(qualityContaminant.getText())), mainApplication.getCookie());
                 if (r.success == 1) {

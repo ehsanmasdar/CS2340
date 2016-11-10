@@ -59,8 +59,8 @@ public class SourceReportController {
         mainApplication = m;
     }
 
-    double latVal = 0;
-    double lonVal = 0;
+    private double latVal = 0;
+    private double lonVal = 0;
     /**
      * Sets lat and lon values for when report is added by clicking the map
      * @param ll object containing lat and lon values
@@ -77,9 +77,9 @@ public class SourceReportController {
      */
     public void handleSubmitPressed() {
         try{
-            Double latd = Double.parseDouble(sourceLat.getText());
-            Double lond = Double.parseDouble(sourceLon.getText());
-            if ( latd > 90 || latd < -90 || lond > 180 || lond < -180){
+            Double latD = Double.parseDouble(sourceLat.getText());
+            Double lonD = Double.parseDouble(sourceLon.getText());
+            if ( latD > 90 || latD < -90 || lonD > 180 || lonD < -180){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Report Submit Error");
                 alert.setHeaderText("Error Submitting Report");
@@ -87,7 +87,7 @@ public class SourceReportController {
                 alert.showAndWait();
             }
             else {
-                Response r = ReportHandler.postSourceReport(new SourceReport(mainApplication.getUser().username, latd, lond, sourceType.getSelectionModel().getSelectedItem(), qualityCondition.getSelectionModel().getSelectedItem()), mainApplication.getCookie());
+                Response r = ReportHandler.postSourceReport(new SourceReport(mainApplication.getUser().username, latD, lonD, sourceType.getSelectionModel().getSelectedItem(), qualityCondition.getSelectionModel().getSelectedItem()), mainApplication.getCookie());
                 if (r.success == 1) {
                     mainApplication.showMainScreen();
                 } else {

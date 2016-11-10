@@ -87,7 +87,7 @@ public class UserHandler {
 
     /**
      * Get user profile
-     * @param cookie Autentication cookie
+     * @param cookie Authentication cookie
      * @return API Response with user profile if successful
      */
     public static Response<Profile> getProfile(String cookie){
@@ -111,7 +111,7 @@ public class UserHandler {
 
     /**
      * Get user object
-     * @param cookie Autentication cookie
+     * @param cookie Authentication cookie
      * @return API Response with user object if successful
      */
     public static Response<User> getUser(String cookie){
