@@ -73,7 +73,8 @@ public class HistorySetupController {
                     //defining the axes
                     final NumberAxis xAxis = new NumberAxis();
                     final NumberAxis yAxis = new NumberAxis();
-                    xAxis.setLabel("Number of Month");
+                    xAxis.setLabel("Day of Year("+ yearNum+")");
+                    xAxis.setForceZeroInRange(false);
                     yAxis.setLabel(type.getSelectionModel().getSelectedItem() + " PPM");
                     //creating the chart
                     final ScatterChart<Number,Number> scatterChart =
@@ -87,7 +88,7 @@ public class HistorySetupController {
                         if (report.lat  > minLat && report.lat < maxLat  && report.lon > minLon && report.lon < maxLon && dateTime.getYear() == yearNum){
                             if (type.getSelectionModel().getSelectedItem().equals("Virus")){
                                 System.out.println(report);
-                                series.getData().add(new XYChart.Data<>(dateTime.getMonthValue(),report.virus));
+                                series.getData().add(new XYChart.Data<>(dateTime.getDayOfYear(),report.virus));
                             }
                             else {
                                 series.getData().add(new XYChart.Data<>(dateTime.getMonthValue(),report.contaminant));
