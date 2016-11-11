@@ -47,7 +47,7 @@ public class MainApp extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("../view/login.fxml"));
+            loader.setLocation(MainApp.class.getResource("/com/cs2340/view/login.fxml"));
             VBox v = loader.load();
 
             // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
@@ -73,7 +73,7 @@ public class MainApp extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("../view/register.fxml"));
+            loader.setLocation(MainApp.class.getResource("/com/cs2340/view/register.fxml"));
             AnchorPane a = loader.load();
 
             // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
@@ -99,7 +99,7 @@ public class MainApp extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("../view/profile.fxml"));
+            loader.setLocation(MainApp.class.getResource("/com/cs2340/view/profile.fxml"));
             VBox a = loader.load();
 
             // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
@@ -130,7 +130,7 @@ public class MainApp extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("../view/main.fxml"));
+            loader.setLocation(MainApp.class.getResource("/com/cs2340/view/main.fxml"));
             VBox a = loader.load();
 
             // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
@@ -164,7 +164,7 @@ public class MainApp extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("../view/sourceReport.fxml"));
+            loader.setLocation(MainApp.class.getResource("/com/cs2340/view/sourceReport.fxml"));
             VBox a = loader.load();
 
             // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
@@ -196,7 +196,7 @@ public class MainApp extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("../view/sourceReportView.fxml"));
+            loader.setLocation(MainApp.class.getResource("/com/cs2340/view/sourceReportView.fxml"));
             VBox a = loader.load();
 
             // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
@@ -225,7 +225,7 @@ public class MainApp extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("../view/qualityReport.fxml"));
+            loader.setLocation(MainApp.class.getResource("/com/cs2340/view/qualityReport.fxml"));
             VBox a = loader.load();
 
             // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
@@ -256,7 +256,7 @@ public class MainApp extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("../view/qualityReportView.fxml"));
+            loader.setLocation(MainApp.class.getResource("/com/cs2340/view/qualityReportView.fxml"));
             VBox a = loader.load();
 
             // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
@@ -284,7 +284,7 @@ public class MainApp extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("../view/historySetup.fxml"));
+            loader.setLocation(MainApp.class.getResource("/com/cs2340/view/historySetup.fxml"));
             VBox a = loader.load();
 
             // Give the com.cs2340.controller access to the main com.cs2340.controller.app.
