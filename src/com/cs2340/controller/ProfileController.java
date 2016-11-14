@@ -24,7 +24,7 @@ public class ProfileController {
      */
     public void setMainApplication(MainApp m) {
         mainApplication = m;
-        Profile p = UserHandler.getProfile(mainApplication.getCookie()).data;
+        Profile p = UserHandler.getProfile(mainApplication.getCookie()).getData();
         profileTitleText.setText(p.getName());
         profileAddressText.setText(p.getAddress());
         profileEmailText.setText(p.getEmail());
@@ -35,14 +35,14 @@ public class ProfileController {
      */
     public void handleProfileSubmit() {
         Response<String> resp = UserHandler.postProfile(new Profile(profileTitleText.getText(),profileAddressText.getText(),profileEmailText.getText()),mainApplication.getCookie());
-        if (resp.success == 1){
+        if (resp.getSuccess() == 1){
             mainApplication.showMainScreen();
         }
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Profile Update Error");
             alert.setHeaderText("Error updating message");
-            alert.setContentText(resp.message);
+            alert.setContentText(resp.getMessage());
 
             alert.showAndWait();
         }

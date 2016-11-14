@@ -69,11 +69,11 @@ public class ReportHandler {
     public static Response<String> postPurityReport(PurityReport purityReport, String cookie) {
         try {
             JSONObject jsonResponse = Unirest.post(Constants.URL_BASE + "/api/report/purity").header("Cookie", cookie)
-                    .field("lat", purityReport.lat)
-                    .field("long", purityReport.lon)
-                    .field("condition", purityReport.condition)
-                    .field("contaminant", purityReport.contaminant)
-                    .field("virus", purityReport.virus)
+                    .field("lat", purityReport.getLat())
+                    .field("long", purityReport.getLon())
+                    .field("condition", purityReport.getCondition())
+                    .field("contaminant", purityReport.getContaminant())
+                    .field("virus", purityReport.getVirus())
                     .asJson().getBody().getObject();
             if (jsonResponse.has("message")) {
                 return new Response<>(jsonResponse.getInt("success"), jsonResponse.getString("message"), null);

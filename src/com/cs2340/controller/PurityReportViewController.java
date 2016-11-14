@@ -23,8 +23,8 @@ public class PurityReportViewController {
      */
     public void setMainApplication(MainApp m) {
         Response<PurityReport[]> response = ReportHandler.getPurityReports(m.getCookie());
-        if (response.success == 1){
-            ObservableList<PurityReport> observableList = FXCollections.observableList(Arrays.asList(response.data));
+        if (response.getSuccess() == 1){
+            ObservableList<PurityReport> observableList = FXCollections.observableList(Arrays.asList(response.getData()));
             purityReportListView.setItems(observableList);
         }
         else {

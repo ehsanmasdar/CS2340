@@ -29,16 +29,16 @@ public class LoginController {
      */
     public void handleSubmitPressed() {
         Response<String> r = UserHandler.postLogin(new User(username.getText(),password.getText()));
-        if (r.success == 1){
-            mainApplication.setCookie(r.data);
-            mainApplication.setUser(UserHandler.getUser(r.data).data);
+        if (r.getSuccess() == 1){
+            mainApplication.setCookie(r.getData());
+            mainApplication.setUser(UserHandler.getUser(r.getData()).getData());
             mainApplication.showMainScreen();
         }
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Login Error");
             alert.setHeaderText("Error Logging in");
-            alert.setContentText(r.message);
+            alert.setContentText(r.getMessage());
 
             alert.showAndWait();
         }

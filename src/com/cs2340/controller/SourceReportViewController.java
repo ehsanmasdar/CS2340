@@ -19,7 +19,7 @@ public class SourceReportViewController {
      * @param m Main Application
      */
     public void setMainApplication(MainApp m) {
-        SourceReport[] sourceReports = ReportHandler.getSourceReports(m.getCookie()).data;
+        SourceReport[] sourceReports = ReportHandler.getSourceReports(m.getCookie()).getData();
         ObservableList<SourceReport> observableList = FXCollections.observableList(Arrays.asList(sourceReports));
         sourceReportViewListView.setItems(observableList);
         //System.out.println(sourceReports[0]);

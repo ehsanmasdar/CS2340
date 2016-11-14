@@ -64,16 +64,16 @@ public class PurityReportController {
                 alert.setContentText(valLatLonMessage);
                 alert.showAndWait();
             } else {
-                Response r = ReportHandler.postPurityReport(new PurityReport(mainApplication.getUser().username, latD, lonD,
+                Response r = ReportHandler.postPurityReport(new PurityReport(mainApplication.getUser().getUsername(), latD, lonD,
                         qualityCondition.getSelectionModel().getSelectedItem(), Integer.parseInt(qualityVirus.getText())
                         , Integer.parseInt(qualityContaminant.getText())), mainApplication.getCookie());
-                if (r.success == 1) {
+                if (r.getSuccess() == 1) {
                     mainApplication.showMainScreen();
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Report Submit Error");
                     alert.setHeaderText("Error Submitting Report");
-                    alert.setContentText(r.message);
+                    alert.setContentText(r.getMessage());
 
                     alert.showAndWait();
                 }

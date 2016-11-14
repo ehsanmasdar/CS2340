@@ -55,14 +55,14 @@ public class RegisterController {
         if (password.getText().equals(passwordConfirm.getText())) {
             User u = new User(username.getText(), password.getText(), levelField.getSelectionModel().getSelectedItem());
             Response r = UserHandler.postRegister(u);
-            if (r.success == 1){
+            if (r.getSuccess() == 1){
                 mainApplication.showLoginScreen();
             }
             else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Register Error");
                 alert.setHeaderText("Error Registering User");
-                alert.setContentText(r.message);
+                alert.setContentText(r.getMessage());
 
                 alert.showAndWait();
             }

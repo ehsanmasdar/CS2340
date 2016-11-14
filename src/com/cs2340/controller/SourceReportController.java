@@ -75,14 +75,14 @@ public class SourceReportController {
                 alert.showAndWait();
             }
             else {
-                Response r = ReportHandler.postSourceReport(new SourceReport(mainApplication.getUser().username, latD, lonD, sourceType.getSelectionModel().getSelectedItem(), qualityCondition.getSelectionModel().getSelectedItem()), mainApplication.getCookie());
-                if (r.success == 1) {
+                Response r = ReportHandler.postSourceReport(new SourceReport(mainApplication.getUser().getUsername(), latD, lonD, sourceType.getSelectionModel().getSelectedItem(), qualityCondition.getSelectionModel().getSelectedItem()), mainApplication.getCookie());
+                if (r.getSuccess() == 1) {
                     mainApplication.showMainScreen();
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Report Submit Error");
                     alert.setHeaderText("Error Submitting Report");
-                    alert.setContentText(r.message);
+                    alert.setContentText(r.getMessage());
 
                     alert.showAndWait();
                 }
