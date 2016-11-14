@@ -56,14 +56,14 @@ public class PurityReportController {
         try{
             Double latD = Double.parseDouble(qualityLat.getText());
             Double lonD = Double.parseDouble(qualityLon.getText());
-            if ( latD > 90 || latD < -90 || lonD > 180 || lonD < -180){
+            String valLatLonMessage = valLatLon(latD, lonD);
+            if (valLatLonMessage != null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Report Submit Error");
                 alert.setHeaderText("Error Submitting Report");
-                alert.setContentText("Lat/Long not valid");
+                alert.setContentText(valLatLonMessage);
                 alert.showAndWait();
-            }
-            else {
+            } else {
                 Response r = ReportHandler.postPurityReport(new PurityReport(mainApplication.getUser().username, latD, lonD,
                         qualityCondition.getSelectionModel().getSelectedItem(), Integer.parseInt(qualityVirus.getText())
                         , Integer.parseInt(qualityContaminant.getText())), mainApplication.getCookie());
@@ -86,6 +86,38 @@ public class PurityReportController {
             alert.setContentText("Lat/Long must be numbers");
 
             alert.showAndWait();
+        }
+
+    }
+
+    /**
+     * Validates lat and lon inputs
+     * @param lat latitude value
+     * @param lon longitude value
+     * @return null if values are valid, error message if invalid
+     */
+     static String valLatLon(Double lat, Double lon) {
+        String returnStr = "";
+        if (lat > 90) {
+            returnStr = returnStr + "latitude is too large";
+        } else if (lat < -90) {
+            returnStr = returnStr + "latitude is too small";
+        }
+        if (lon > 180) {
+            if (returnStr.length() > 0) {
+                returnStr = returnStr + " and ";
+            }
+            returnStr = returnStr + "longitude is too large";
+        } else if (lon < -180) {
+            if (returnStr.length() > 0) {
+                returnStr = returnStr + " and ";
+            }
+            returnStr = returnStr + "longitude is too small";
+        }
+        if (returnStr.length() > 0) {
+            return returnStr;
+        } else {
+            return null;
         }
 
     }
