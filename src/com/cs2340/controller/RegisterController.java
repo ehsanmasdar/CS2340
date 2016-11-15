@@ -49,10 +49,30 @@ public class RegisterController {
     }
 
     /**
+     * Validate password length and verify the same password was entered twice
+     * @param password Password Entered
+     * @param passwordConfirmation Password Confirmation Entered
+     * @return Error message, or null for sucessful validation
+     */
+    public static String validatePassword(String password, String passwordConfirmation){
+        if (password.equals(passwordConfirmation)){
+            if (password.length() > 3){
+                return null;
+            }
+            else {
+                return "Password must be 4 characters or longer";
+            }
+        }
+        else{
+            return "Passwords entered must match";
+        }
+    }
+    /**
      * Validate and process user registration
      */
     public void handleRegisterSubmit() {
-        if (password.getText().equals(passwordConfirm.getText())) {
+        String validation = validatePassword(password.getText(), passwordConfirm.getText());
+        if (validation == null) {
             User u = new User(username.getText(), password.getText(), levelField.getSelectionModel().getSelectedItem());
             Response r = UserHandler.postRegister(u);
             if (r.getSuccess() == 1){
@@ -71,7 +91,7 @@ public class RegisterController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Register Error");
             alert.setHeaderText("Error Registering User");
-            alert.setContentText("Passwords do not match");
+            alert.setContentText(validation);
             alert.showAndWait();
         }
     }
