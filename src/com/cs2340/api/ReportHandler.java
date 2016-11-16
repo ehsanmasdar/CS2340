@@ -54,10 +54,10 @@ public class ReportHandler {
             e.printStackTrace();
             return new Response<>(0, "", null);
         }
-        catch (Exception e){
+        /*catch (Exception e){
             e.printStackTrace();
             return new Response<>(0, "", null);
-        }
+        }*/
     }
 
     /**
