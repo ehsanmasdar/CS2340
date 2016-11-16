@@ -96,7 +96,7 @@ public class PurityReportController {
      * @param lon longitude value
      * @return null if values are valid, error message if invalid
      */
-     static String valLatLon(Double lat, Double lon) {
+     public static String valLatLon(Double lat, Double lon) {
         String returnStr = "";
         if (lat > 90) {
             returnStr = returnStr + "latitude is too large";

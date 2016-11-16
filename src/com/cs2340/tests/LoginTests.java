@@ -1,4 +1,4 @@
-package com.cs2340.controller;
+package com.cs2340.tests;
 
 import static org.junit.Assert.*;
 

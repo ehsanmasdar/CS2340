@@ -1,7 +1,7 @@
-package com.cs2340.controller;
+package com.cs2340.tests;
 
 import org.junit.Test;
-
+import com.cs2340.controller.PurityReportController;
 import static org.junit.Assert.*;
 
 /**
