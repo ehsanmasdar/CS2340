@@ -1,4 +1,7 @@
-package com.cs2340.controller;
+package com.cs2340.tests;
+
+import com.cs2340.controller.RegisterController;
+import org.junit.Assert;
 
 import static org.junit.Assert.*;
 
@@ -8,7 +11,7 @@ import static org.junit.Assert.*;
 public class RegisterControllerTest {
     @org.junit.Test
     public void validatePasswordCorrect() throws Exception {
-        assertEquals(null, RegisterController.validatePassword("test","test"));
+        Assert.assertEquals(null, RegisterController.validatePassword("test","test"));
 
     }
     @org.junit.Test
