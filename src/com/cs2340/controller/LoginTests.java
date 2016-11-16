@@ -3,7 +3,6 @@ package com.cs2340.controller;
 import static org.junit.Assert.*;
 
 import com.cs2340.api.UserHandler;
-import com.cs2340.model.AccessLevel;
 import com.cs2340.model.User;
 import com.cs2340.model.Response;
 import org.junit.Test;

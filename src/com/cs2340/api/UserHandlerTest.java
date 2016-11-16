@@ -1,9 +1,7 @@
 package com.cs2340.api;
 
-import com.cs2340.controller.RegisterController;
 import com.cs2340.model.Profile;
 import static org.junit.Assert.*;
-import com.cs2340.api.UserHandler;
 
 /**
  * Created by Jacob Wartofsky on 11/15/16.

@@ -52,7 +52,7 @@ public class RegisterController {
      * Validate password length and verify the same password was entered twice
      * @param password Password Entered
      * @param passwordConfirmation Password Confirmation Entered
-     * @return Error message, or null for sucessful validation
+     * @return Error message, or null for successful validation
      */
     public static String validatePassword(String password, String passwordConfirmation){
         if (password.equals(passwordConfirmation)){

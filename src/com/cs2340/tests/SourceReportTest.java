@@ -5,8 +5,6 @@ import com.cs2340.api.UserHandler;
 import com.cs2340.model.Response;
 import com.cs2340.model.SourceReport;
 import com.cs2340.model.User;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
