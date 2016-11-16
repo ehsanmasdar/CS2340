@@ -19,7 +19,6 @@ public class UserHandlerTest {
         UserHandler.postProfile(p, pcookie);
         //Get the profile
         assertEquals("Jacob", UserHandler.getProfile(pcookie).getData().getName());
-        assertEquals(1, UserHandler.getProfile(pcookie).getSuccess());
     }
 
 
