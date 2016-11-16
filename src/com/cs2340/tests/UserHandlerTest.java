@@ -9,26 +9,31 @@ import static org.junit.Assert.*;
  */
 public class UserHandlerTest {
 
-    Profile p = new Profile("Jacob", "1337 lala land", "foo@notreal.com");
-    String pcookie = "cookie";
+
 
     //Test to see if two profiles are equal
     @org.junit.Test
     public void testGetProfile() throws Exception {
+        UserHandler use = new UserHandler();
         //Create a profile
-        UserHandler.postProfile(p, pcookie);
+        Profile p = new Profile("Jacob", "1337 lala land", "foo@notreal.com");
+        String pcookie = "cookie";
+        use.postProfile(p, pcookie);
         //Get the profile
-        assertEquals("Jacob", UserHandler.getProfile(pcookie).getData().getName());
+        assertEquals("Jacob", use.getProfile(pcookie).getData().getName());
     }
 
 
     //Test to see if two profiles are not equal
     @org.junit.Test
     public void testGetProfileNotEqual() throws Exception {
+        UserHandler use = new UserHandler();
         //Create a profile
-        UserHandler.postProfile(p, pcookie);
+        Profile p = new Profile("Jacob", "1337 lala land", "foo@notreal.com");
+        String pcookie = "cookie";
+        use.postProfile(p, pcookie);
         //Get the profile
-        assertNotEquals("Fred", UserHandler.getProfile(pcookie).getData().getName());
+        assertNotEquals("Fred", use.getProfile(pcookie).getData().getName());
     }
 
 }
