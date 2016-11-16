@@ -1,5 +1,6 @@
 package com.cs2340.tests;
 
+import com.cs2340.api.UserHandler;
 import com.cs2340.model.Profile;
 import static org.junit.Assert.*;
 
